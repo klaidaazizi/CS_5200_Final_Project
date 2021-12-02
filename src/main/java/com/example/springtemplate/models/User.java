@@ -3,6 +3,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +19,23 @@ public class User {
     private String state;
     private Integer zipCode;
     private Integer phoneNumber;
+
+    public User(String firstName, String lastName, String username, String password, String email, String dateOfBirth,
+                String streetAddress, String city, String state, Integer zipCode, Integer phoneNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.dateOfBirth = dateOfBirth;
+        this.streetAddress = streetAddress;
+        this.city = city;
+        this.state = state;
+        this.zipCode = zipCode;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public User() {}
 
     public Integer getUserId() {
         return userId;
@@ -114,21 +132,4 @@ public class User {
     public void setPhoneNumber(Integer phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
-    public User(String firstName, String lastName, String username, String password, String email, String dateOfBirth,
-                String streetAddress, String city, String state, Integer zipCode, Integer phoneNumber) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.dateOfBirth = dateOfBirth;
-        this.streetAddress = streetAddress;
-        this.city = city;
-        this.state = state;
-        this.zipCode = zipCode;
-        this.phoneNumber = phoneNumber;
-    }
-
-    public User() {}
 }
