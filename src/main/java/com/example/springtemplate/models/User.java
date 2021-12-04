@@ -1,4 +1,5 @@
 package com.example.springtemplate.models;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,7 +8,7 @@ import javax.persistence.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer userId;
+    private Integer id;
     private String firstName;
     private String lastName;
     private String username;
@@ -15,6 +16,7 @@ public class User {
     private String email;
     private String dateOfBirth;
     private String streetAddress;
+    @Column(name = "city")
     private String city;
     private String state;
     private Integer zipCode;
@@ -37,12 +39,12 @@ public class User {
 
     public User() {}
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getFirstName() {

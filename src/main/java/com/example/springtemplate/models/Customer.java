@@ -1,21 +1,20 @@
 package com.example.springtemplate.models;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "customers")
-@PrimaryKeyJoinColumn(name = "userId")
 public class Customer extends User {
     public Integer age;
     public String profilePicture;
-    @ManyToMany (mappedBy = "customerList")
-    public List<Seller> companiesFollowing;
+    @OneToMany (mappedBy = "customer")
+    public Set<Follow> follows;
 
-    public Customer(Integer age, String profilePicture, List<Seller> companiesFollowing) {
+    public Customer(Integer age, String profilePicture, Set<Follow> follows) {
         this.age = age;
         this.profilePicture = profilePicture;
-        this.companiesFollowing = companiesFollowing;
+        this.follows = follows;
     }
 
     public Customer() {}
@@ -36,11 +35,11 @@ public class Customer extends User {
         this.profilePicture = profilePicture;
     }
 
-    public List<Seller> getCompaniesFollowing() {
-        return this.companiesFollowing;
+    public Set<Follow> getFollows() {
+        return this.follows;
     }
 
-    public void addCompany(Seller seller) {
-        this.companiesFollowing.add(seller);
+    public void setFollows(Set<Follow> follows) {
+        this.follows.addAll(follows);
     }
 }

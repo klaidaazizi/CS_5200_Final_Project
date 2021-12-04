@@ -25,13 +25,13 @@ DROP TABLE IF EXISTS `follows`;
 CREATE TABLE `follows` (
   `follow_id` int NOT NULL AUTO_INCREMENT,
   `customer_id` int NOT NULL,
-  `seller_id` varchar(155) NOT NULL,
+  `seller_id` int NOT NULL,
   `date_created` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`follow_id`),
   KEY `follows_to_customers` (`customer_id`),
   KEY `follows_to_sellers_idx` (`seller_id`),
-  CONSTRAINT `follows_to_customers` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `follows_to_sellers` FOREIGN KEY (`seller_id`) REFERENCES `sellers` (`company_name`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `follows_to_customers` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `follows_to_sellers` FOREIGN KEY (`seller_id`) REFERENCES `sellers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

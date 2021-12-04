@@ -1,30 +1,30 @@
 package com.example.springtemplate.models;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "sellers")
-@PrimaryKeyJoinColumn(name = "user_id")
-public class Seller extends User{
+public class Seller extends User {
     public String companyName;
     public Integer yearFounded;
-    @ManyToMany
-    @JoinTable(name = "follows",
-    joinColumns = @JoinColumn(name="seller_id",
-    referencedColumnName = "userId"),
-    inverseJoinColumns = @JoinColumn(name = "customer_id",
-    referencedColumnName = "userId"))
-    public List<Customer> customerList;
+    @OneToMany(mappedBy = "seller")
+    public Set<Follow> follows;
 
-    public Seller(String companyName, Integer yearFounded, List<Customer> customerList) {
+    public Seller(String firstName, String lastName, String username, String password,
+                  String email, String dateOfBirth, String streetAddress, String city,
+                  String state, Integer zipCode, Integer phoneNumber,
+                  String companyName, Integer yearFounded, Set<Follow> follows) {
+
+        super(firstName, lastName, username, password, email, dateOfBirth,
+                streetAddress, city, state, zipCode, phoneNumber);
         this.companyName = companyName;
         this.yearFounded = yearFounded;
-        this.customerList = customerList;
+        this.follows = follows;
     }
 
     public Seller() {}
-
+    
     public String getCompanyName() {
         return companyName;
     }
@@ -41,12 +41,12 @@ public class Seller extends User{
         this.yearFounded = yearFounded;
     }
 
-    public List<Customer> getCustomerList() {
-        return this.customerList;
+    public Set<Follow> getFollows() {
+        return this.follows;
     }
 
-    public void addCustomer(Customer customer) {
-        this.customerList.add(customer);
+    public void setFollows(Set<Follow> follows) {
+        this.follows.addAll(follows);
     }
 
 }

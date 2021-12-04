@@ -23,14 +23,12 @@ DROP TABLE IF EXISTS `customers`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `customers` (
-  `customer_id` int NOT NULL AUTO_INCREMENT,
-  `user_data` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `profile_picture` varchar(155) DEFAULT NULL,
   `age` int DEFAULT NULL,
-  PRIMARY KEY (`customer_id`),
-  UNIQUE KEY `user_data_UNIQUE` (`user_data`),
-  KEY `customers_to_users` (`user_data`),
-  CONSTRAINT `customers_to_users` FOREIGN KEY (`user_data`) REFERENCES `users` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  PRIMARY KEY (`id`),
+  KEY `customers_to_users` (`id`),
+  CONSTRAINT `customers_to_users` FOREIGN KEY (`id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
