@@ -40,6 +40,9 @@ public class Customer extends User {
     }
 
     public void setFollows(Set<Follow> follows) {
-        this.follows.addAll(follows);
+        if (!(this.follows == null)) {
+            this.follows.addAll(follows);
+        }
     }
+
 }

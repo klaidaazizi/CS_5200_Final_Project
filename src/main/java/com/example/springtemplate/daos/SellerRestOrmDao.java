@@ -3,7 +3,6 @@ package com.example.springtemplate.daos;
 import com.example.springtemplate.models.Seller;
 import com.example.springtemplate.models.User;
 import com.example.springtemplate.repositories.SellerRestRepository;
-import com.example.springtemplate.repositories.UserRestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,8 +16,7 @@ public class SellerRestOrmDao {
 
     @GetMapping("/api/sellers")
     public List<Seller> findAllSellers(){
-        System.out.print("Got to :GET");
-        return (List<Seller>)sellerRepository.findAll();
+        return sellerRepository.findAllSellers();
     }
 
     @GetMapping("/api/sellers/{id}")
@@ -42,7 +40,6 @@ public class SellerRestOrmDao {
     public User updateSeller(
             @PathVariable("id") Integer id,
             @RequestBody Seller sellerUpdates) {
-        System.out.print("Got to :PUT");
         Seller seller = sellerRepository.findSellerById(id);
         seller.setFirstName(sellerUpdates.getFirstName());
         seller.setLastName(sellerUpdates.getLastName());

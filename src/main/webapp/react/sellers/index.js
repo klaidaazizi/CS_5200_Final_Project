@@ -1,5 +1,5 @@
 import SellerList from "./seller-list";
-import SellerFormEditor from "./selle/seller-form-editor";
+import SellerFormEditor from "./seller-form-editor";
 const {HashRouter, Route} = window.ReactRouterDOM; 
 const App = () => {
     return (
