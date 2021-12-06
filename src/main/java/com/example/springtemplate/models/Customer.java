@@ -5,6 +5,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "customers")
+@DiscriminatorValue("2")
 public class Customer extends User {
     public Integer age;
     public String profilePicture;

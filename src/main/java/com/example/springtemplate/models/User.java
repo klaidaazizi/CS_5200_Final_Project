@@ -4,22 +4,30 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "user_type",
+discriminatorType = DiscriminatorType.INTEGER)
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(name = "first_name")
     private String firstName;
+    @Column(name = "last_name")
     private String lastName;
     private String username;
     private String password;
     private String email;
+    @Column(name = "date_of_birth")
     private String dateOfBirth;
+    @Column(name = "street_address")
     private String streetAddress;
     @Column(name = "city")
     private String city;
     private String state;
+    @Column(name = "zip_code")
     private Integer zipCode;
+    @Column(name = "phone_number")
     private Integer phoneNumber;
 
     public User(String firstName, String lastName, String username, String password, String email, String dateOfBirth,

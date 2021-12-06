@@ -5,6 +5,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "sellers")
+@DiscriminatorValue("1")
 public class Seller extends User {
     public String companyName;
     public Integer yearFounded;
