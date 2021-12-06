@@ -22,14 +22,13 @@ public class Product {
     private Integer ageGroup;
 
     @OneToMany(mappedBy = "product")
-    @JoinColumn(name="product_id")
     private List<Order> orders = new ArrayList<>();
 
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name="seller_id")
     private Seller seller;
 
-    @ManyToOne(fetch=FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name="discount_id")
     private Discount discount;
 

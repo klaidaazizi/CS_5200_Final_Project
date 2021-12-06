@@ -11,9 +11,9 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
     private Integer orderId;
-    @Column(name="created_date")
+    @Column(name="date_created")
     private String createdDate;
-    @Column(name="shipped_date")
+    @Column(name="date_shipped")
     private String shippedDate;
 
     @ManyToOne
@@ -29,6 +29,10 @@ public class Order {
         this.shippedDate = shippedDate;
         this.product = product;
         this.cart = cart;
+    }
+
+    public Order() {
+
     }
 
     public Integer getOrderId() {
