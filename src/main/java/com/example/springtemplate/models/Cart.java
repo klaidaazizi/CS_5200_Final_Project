@@ -19,6 +19,7 @@ public class Cart {
     private Payment payment;
 
     @OneToMany(mappedBy = "cart")
+    @JsonIgnore
     private List<Order> orders;
 
     @ManyToOne
