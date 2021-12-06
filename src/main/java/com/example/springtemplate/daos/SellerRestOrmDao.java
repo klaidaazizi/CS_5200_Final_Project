@@ -39,7 +39,7 @@ public class SellerRestOrmDao {
     }
 
     @PutMapping("/api/sellers/{id}")
-    public Seller updateSeller(
+    public User updateSeller(
             @PathVariable("id") Integer id,
             @RequestBody Seller sellerUpdates) {
         System.out.print("Got to :PUT");
@@ -57,7 +57,6 @@ public class SellerRestOrmDao {
         seller.setPhoneNumber(sellerUpdates.getPhoneNumber());
         seller.setCompanyName(sellerUpdates.getCompanyName());
         seller.setYearFounded(sellerUpdates.getYearFounded());
-        seller.setFollows(sellerUpdates.getFollows());
         return sellerRepository.save(seller);
     }
 

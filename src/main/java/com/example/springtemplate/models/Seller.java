@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "sellers")
 @DiscriminatorValue("1")
 public class Seller extends User {
     public String companyName;
@@ -47,7 +46,9 @@ public class Seller extends User {
     }
 
     public void setFollows(Set<Follow> follows) {
-        this.follows.addAll(follows);
+        if (!(this.follows == null)) {
+            this.follows.addAll(follows);
+        }
     }
 
 }
