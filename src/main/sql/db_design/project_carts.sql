@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.26, for macos11 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.26, for Win64 (x86_64)
 --
 -- Host: localhost    Database: project
 -- ------------------------------------------------------
@@ -23,13 +23,14 @@ DROP TABLE IF EXISTS `carts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `carts` (
-  `cart_id` int NOT NULL,
-  `payment_type` varchar(45) NOT NULL,
-  `customer_id` int NOT NULL,
+  `cart_id` int NOT NULL AUTO_INCREMENT,
+  `payment_type` enum('DEBIT','CREDIT','PAYPAL') DEFAULT 'DEBIT',
+  `customer_id` int DEFAULT NULL,
+  `created_date` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`cart_id`),
-  KEY `payment_enum_idx` (`payment_type`),
-  CONSTRAINT `payment_enum` FOREIGN KEY (`payment_type`) REFERENCES `payments` (`payment`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `cart_to_customer` (`customer_id`),
+  CONSTRAINT `cart_to_customer` FOREIGN KEY (`customer_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +39,7 @@ CREATE TABLE `carts` (
 
 LOCK TABLES `carts` WRITE;
 /*!40000 ALTER TABLE `carts` DISABLE KEYS */;
-INSERT INTO `carts` VALUES (1,'Debit',1),(2,'Credit',2);
+INSERT INTO `carts` VALUES (1,'CREDIT',3,'2020-08-30'),(2,'PAYPAL',NULL,'2020-08-30');
 /*!40000 ALTER TABLE `carts` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-22 15:56:56
+-- Dump completed on 2021-12-06 17:44:59

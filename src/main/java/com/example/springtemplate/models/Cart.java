@@ -32,8 +32,7 @@ public class Cart {
         this.customer = customer;
     }
 
-    public Cart() {
-    }
+    public Cart() {}
 
     public Integer getId() {
         return this.id;

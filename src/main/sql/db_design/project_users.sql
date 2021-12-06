@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.26, for macos11 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.26, for Win64 (x86_64)
 --
 -- Host: localhost    Database: project
 -- ------------------------------------------------------
@@ -26,17 +26,22 @@ CREATE TABLE `users` (
   `id` int NOT NULL AUTO_INCREMENT,
   `first_name` varchar(55) NOT NULL,
   `last_name` varchar(55) NOT NULL,
-  `username` varchar(55) NOT NULL,
-  `password` varchar(15) NOT NULL,
-  `email` varchar(55) NOT NULL,
+  `username` varchar(55) DEFAULT NULL,
+  `password` varchar(15) DEFAULT NULL,
+  `email` varchar(55) DEFAULT NULL,
   `date_of_birth` date DEFAULT NULL,
-  `street_address` varchar(55) NOT NULL,
-  `city` varchar(55) NOT NULL,
-  `state` varchar(2) NOT NULL,
-  `zip_code` int NOT NULL,
+  `street_address` varchar(55) DEFAULT NULL,
+  `city` varchar(55) DEFAULT NULL,
+  `state` varchar(2) DEFAULT NULL,
+  `zip_code` int DEFAULT NULL,
   `phone_number` bigint DEFAULT NULL,
+  `company_name` varchar(255) DEFAULT NULL,
+  `year_founded` int DEFAULT NULL,
+  `age` int DEFAULT NULL,
+  `profile_picture` varchar(45) DEFAULT NULL,
+  `user_type` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +50,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'John','Park','jpark','CS','as','1992-08-19','19 Copley St','Brookline','MA',2446,8785465),(2,'Jane','Smith','jsmith','p@ssw0rd','jsmith@northeastern.edu','1995-02-21','45 14th St','New York City','NY',10011,71834325);
+INSERT INTO `users` VALUES (1,'John','Park','jpark','CS','as','1992-08-19','19 Copley St','Brookline','MA',2446,8785465,'Facebook',2009,NULL,NULL,1),(3,'Aliza','Etka','amiller','password1','aliza@gmail.com',NULL,'12344 Street','Lincoln','NE',34593,12,NULL,NULL,29,'apple.jpeg',2),(4,'Patrick','Etka','patetka','password','patetka@gmail.com',NULL,'123 Street','Bristol','VT',5443,82,NULL,NULL,29,'dog.jpeg',2),(5,'Cora','Dog','corabear74','Kibble','Cora@wuff.com',NULL,'132 Treat Avenue','KongVille','PB',20003,1,'Chewy',2010,NULL,NULL,1),(6,'Mark','Zuckerberg','mzuck',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Facebook',NULL,NULL,NULL,1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +63,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-22 15:56:55
+-- Dump completed on 2021-12-06 17:45:00
