@@ -7,7 +7,11 @@ import javax.persistence.*;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "order_id")
+    private Integer orderId;
+    @Column(name="created_date")
     private String createdDate;
+    @Column(name="shipped_date")
     private String shippedDate;
 
     @ManyToOne
@@ -21,6 +25,14 @@ public class Order {
         this.shippedDate = shippedDate;
         this.product = product;
         this.cart = cart;
+    }
+
+    public Integer getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
     }
 
     public String getCreatedDate() {

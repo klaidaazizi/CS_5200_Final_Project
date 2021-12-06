@@ -8,14 +8,17 @@ import java.util.List;
 public class Discount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
+    @Column(name="discount_id")
+    private Integer discountId;
     private String title;
     private String description;
+    @Column(name="start_date")
     private String startDate;
+    @Column(name="end_date")
     private String endDate;
     private int percent;
 
-    @OneToMany
+    @OneToMany(mappedBy = "discount")
     private List<Product> products;
 
     public Discount(String title, String description, String startDate, String endDate,
@@ -26,6 +29,14 @@ public class Discount {
         this.endDate = endDate;
         this.percent = percent;
         this.products = products;
+    }
+
+    public Integer getDiscountId() {
+        return discountId;
+    }
+
+    public void setDiscountId(Integer discountId) {
+        this.discountId = discountId;
     }
 
     public String getTitle() {
@@ -66,5 +77,13 @@ public class Discount {
 
     public void setPercent(int percent) {
         this.percent = percent;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }

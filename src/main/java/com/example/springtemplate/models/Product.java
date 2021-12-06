@@ -8,15 +8,17 @@ import java.util.List;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="product_id")
+    private Integer productid;
     private String name;
     private Category category;
-    private float price;
-    private int inventory;
-    private float weight;
-    private int ageGroup;
+    private Float price;
+    private Integer inventory;
+    private Float weight;
+    @Column(name= "age_group")
+    private Integer ageGroup;
 
-
-    @OneToMany
+    @OneToMany(mappedBy = "product")
     private List<Order> orders;
 
     @ManyToOne
@@ -40,6 +42,14 @@ public class Product {
 
     public Product(){}
 
+    public Integer getProductid() {
+        return productid;
+    }
+
+    public void setProductid(Integer productid) {
+        this.productid = productid;
+    }
+
     public String getName() {
         return name;
     }
@@ -56,35 +66,35 @@ public class Product {
         this.category = category;
     }
 
-    public float getPrice() {
+    public Float getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(Float price) {
         this.price = price;
     }
 
-    public int getInventory() {
+    public Integer getInventory() {
         return inventory;
     }
 
-    public void setInventory(int inventory) {
+    public void setInventory(Integer inventory) {
         this.inventory = inventory;
     }
 
-    public float getWeight() {
+    public Float getWeight() {
         return weight;
     }
 
-    public void setWeight(float weight) {
+    public void setWeight(Float weight) {
         this.weight = weight;
     }
 
-    public int getAgeGroup() {
+    public Integer getAgeGroup() {
         return ageGroup;
     }
 
-    public void setAgeGroup(int ageGroup) {
+    public void setAgeGroup(Integer ageGroup) {
         this.ageGroup = ageGroup;
     }
 

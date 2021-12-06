@@ -8,11 +8,13 @@ import java.util.List;
 public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
+    @Column(name="cart_id")
+    private Integer cartId;
+    @Column(name="created_date")
     private String createdDate;
     private Payment payment;
 
-    @OneToMany
+    @OneToMany(mappedBy = "cart")
     private List<Order> orders;
 
     @ManyToOne
@@ -23,6 +25,14 @@ public class Cart {
         this.payment = payment;
         this.orders = orders;
         this.customer = customer;
+    }
+
+    public Integer getCartId() {
+        return cartId;
+    }
+
+    public void setCartId(Integer cartId) {
+        this.cartId = cartId;
     }
 
     public String getCreatedDate() {
