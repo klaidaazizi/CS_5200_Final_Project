@@ -25,28 +25,17 @@ public class Product {
     private List<Order> orders = new ArrayList<>();
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name="seller_id")
     private Seller seller;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name="discount_id")
     private Discount discount;
 
     public Product(String name, String category, Float price, Integer inventory, Float weight,
                    Integer ageGroup, List<Order> orders, Seller seller, Discount discount) {
-        this.name = name;
-        this.category = category;
-        this.price = price;
-        this.inventory = inventory;
-        this.weight = weight;
-        this.ageGroup = ageGroup;
-        this.orders = orders;
-        this.seller = seller;
-        this.discount = discount;
-    }
-
-    public Product(Integer productId, String name, String category, Float price, Integer inventory, Float weight, Integer ageGroup, List<Order> orders, Seller seller, Discount discount) {
-        this.id = productId;
         this.name = name;
         this.category = category;
         this.price = price;

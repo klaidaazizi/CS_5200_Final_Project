@@ -8,19 +8,24 @@ import java.util.Set;
 public class Seller extends User {
     public String companyName;
     public Integer yearFounded;
+
     @OneToMany(mappedBy = "seller")
     public Set<Follow> follows;
+
+    @OneToMany(mappedBy = "seller")
+    public Set<Product> products;
 
     public Seller(String firstName, String lastName, String username, String password,
                   String email, String dateOfBirth, String streetAddress, String city,
                   String state, Integer zipCode, Integer phoneNumber,
-                  String companyName, Integer yearFounded, Set<Follow> follows) {
+                  String companyName, Integer yearFounded, Set<Follow> follows, Set<Product> products) {
 
         super(firstName, lastName, username, password, email, dateOfBirth,
                 streetAddress, city, state, zipCode, phoneNumber);
         this.companyName = companyName;
         this.yearFounded = yearFounded;
         this.follows = follows;
+        this.products = products;
     }
 
     public Seller() {}
@@ -43,6 +48,14 @@ public class Seller extends User {
 
     public Set<Follow> getFollows() {
         return this.follows;
+    }
+
+    public Set<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(Set<Product> products) {
+        this.products = products;
     }
 
     public void setFollows(Set<Follow> follows) {
