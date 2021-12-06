@@ -28,7 +28,8 @@ const ProductList = () => {
                                 {product.price},
                                 {product.inventory},
                                 {product.weight},
-                                {product.ageGroup}
+                                {product.ageGroup},
+                                {product.discount}
 
                             </Link>
                         </li>)

@@ -1,5 +1,8 @@
 package com.example.springtemplate.models;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -9,9 +12,9 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="product_id")
-    private Integer productid;
+    private Integer productId;
     private String name;
-    private Category category;
+    private String category;
     private Float price;
     private Integer inventory;
     private Float weight;
@@ -19,16 +22,32 @@ public class Product {
     private Integer ageGroup;
 
     @OneToMany(mappedBy = "product")
-    private List<Order> orders;
+    @JoinColumn(name="product_id")
+    private List<Order> orders = new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="seller_id")
     private Seller seller;
 
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="discount_id")
     private Discount discount;
 
-    public Product(String name, Category category, float price, int inventory, float weight,
-                   int ageGroup, List<Order> orders, Seller seller, Discount discount) {
+    public Product(String name, String category, Float price, Integer inventory, Float weight,
+                   Integer ageGroup, List<Order> orders, Seller seller, Discount discount) {
+        this.name = name;
+        this.category = category;
+        this.price = price;
+        this.inventory = inventory;
+        this.weight = weight;
+        this.ageGroup = ageGroup;
+        this.orders = orders;
+        this.seller = seller;
+        this.discount = discount;
+    }
+
+    public Product(Integer productId, String name, String category, Float price, Integer inventory, Float weight, Integer ageGroup, List<Order> orders, Seller seller, Discount discount) {
+        this.productId = productId;
         this.name = name;
         this.category = category;
         this.price = price;
@@ -42,12 +61,12 @@ public class Product {
 
     public Product(){}
 
-    public Integer getProductid() {
-        return productid;
+    public Integer getProductId() {
+        return productId;
     }
 
-    public void setProductid(Integer productid) {
-        this.productid = productid;
+    public void setProductId(Integer productId) {
+        this.productId = productId;
     }
 
     public String getName() {
@@ -58,11 +77,11 @@ public class Product {
         this.name = name;
     }
 
-    public Category getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 

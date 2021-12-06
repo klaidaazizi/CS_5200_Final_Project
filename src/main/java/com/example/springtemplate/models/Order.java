@@ -1,5 +1,7 @@
 package com.example.springtemplate.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,9 +17,11 @@ public class Order {
     private String shippedDate;
 
     @ManyToOne
+    @JoinColumn(name="product_id")
     private Product product;
 
     @ManyToOne
+    @JoinColumn(name="cart_id")
     private Cart cart;
 
     public Order(String createdDate, String shippedDate, Product product, Cart cart) {
