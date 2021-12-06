@@ -1,6 +1,6 @@
 package com.example.springtemplate.models;
 
-enum Payment {
+public enum Payment {
     DEBIT,
     CREDIT,
     PAYPAL

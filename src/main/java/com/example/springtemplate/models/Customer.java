@@ -1,5 +1,7 @@
 package com.example.springtemplate.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
@@ -11,9 +13,11 @@ public class Customer extends User {
     public String profilePicture;
 
     @OneToMany (mappedBy = "customer")
+    @JsonIgnore
     public Set<Follow> follows;
 
     @OneToMany(mappedBy = "customer")
+    @JsonIgnore
     public List<Cart> carts;
 
     public Customer(Integer age, String profilePicture, Set<Follow> follows) {

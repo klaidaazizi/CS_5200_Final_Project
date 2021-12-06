@@ -1,5 +1,7 @@
 package com.example.springtemplate.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -9,9 +11,11 @@ public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="cart_id")
-    private Integer cartId;
+    private Integer id;
     @Column(name="created_date")
     private String createdDate;
+    @Column(name = "payment_type")
+    @Enumerated(EnumType.STRING)
     private Payment payment;
 
     @OneToMany(mappedBy = "cart")
@@ -30,12 +34,12 @@ public class Cart {
     public Cart() {
     }
 
-    public Integer getCartId() {
-        return cartId;
+    public Integer getId() {
+        return this.id;
     }
 
-    public void setCartId(Integer cartId) {
-        this.cartId = cartId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getCreatedDate() {
