@@ -29,9 +29,9 @@ public class ProductRestDao {
         return productRepository.findProductById(id);
     }
 
-    @PutMapping("/api/products/{productId}")
+    @PutMapping("/api/products/{id}")
     public Product updateProduct(
-            @PathVariable("productId") Integer id,
+            @PathVariable("id") Integer id,
             @RequestBody Product productUpdates) {
         Product product = productRepository.findProductById(id);
         product.setName(productUpdates.getName());
@@ -43,9 +43,9 @@ public class ProductRestDao {
         return productRepository.save(product);
     }
 
-    @DeleteMapping("/api/products/{productId}")
+    @DeleteMapping("/api/products/{id}")
     public void deleteProduct(
-            @PathVariable("productId") Integer id) {
+            @PathVariable("id") Integer id) {
         productRepository.deleteById(id);
     }
 }

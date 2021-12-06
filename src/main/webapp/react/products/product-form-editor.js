@@ -12,16 +12,16 @@ const ProductFormEditor = () => {
     }, []);
     const createProduct = (product) =>
         productService.createProduct(product)
-            .then(() => history.goBack())
+            .then(() => history.back())
     const findProductById = (id) =>
         productService.findProductById(id)
             .then(product => setProduct(product))
     const deleteProduct = (id) =>
         productService.deleteProduct(id)
-            .then(() => history.goBack())
+            .then(() => history.back())
     const updateProduct = (id, newProduct) =>
         productService.updateProduct(id, newProduct)
-            .then(() => history.goBack())
+            .then(() => history.back())
     return (
         <div>
             <h2>Product Editor</h2>
@@ -69,6 +69,14 @@ const ProductFormEditor = () => {
                        value={product.ageGroup}/>
                         <br/>
             <br/>
+            <label>Seller</label>
+               <input
+               onChange={(e) =>
+               setProduct(product =>
+               ({...product, seller: e.target.value}))}
+               value={product.seller}/>
+               <br/>
+               <br/>
             <button className="btn btn-warning"
                 onClick={() => {
                     history.back()}}>

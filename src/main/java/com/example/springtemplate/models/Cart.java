@@ -27,6 +27,9 @@ public class Cart {
         this.customer = customer;
     }
 
+    public Cart() {
+    }
+
     public Integer getCartId() {
         return cartId;
     }
