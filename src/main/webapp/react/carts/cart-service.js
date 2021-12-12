@@ -17,6 +17,14 @@ export const deleteCart = (id) =>
         method: "DELETE"
     })
 
+export const addCart = (cart, id) =>
+    fetch(`${CARTS_URL}/${id}`, {
+        method: 'POST',
+        body: JSON.stringify(cart),
+        headers: {'content-type': 'application/json'}
+    })
+        .then(response => response.json())
+
 export const createCart = (cart) =>
     fetch(CARTS_URL, {
         method: 'POST',
@@ -39,5 +47,6 @@ export default {
     deleteCart,
     createCart,
     updateCart,
-    findCartsByCustomer
+    findCartsByCustomer,
+    addCart
 }

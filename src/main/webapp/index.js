@@ -4,6 +4,7 @@ import CustomerFormEditorByCart from "./react/customers/customer-form-editor-by-
 import CartList from "./react/carts/cart-list";
 import CartFormEditor from "./react/carts/cart-form-editor";
 import CartListByCustomer from "./react/carts/cart-list-by-customer";
+import CartAdderForm from "./react/carts/add-cart.js"
 import ProductList from "./react/products/product-list";
 import ProductFormEditor from "./react/products/product-form-editor";
 import SellerList from "./react/sellers/seller-list";
@@ -16,7 +17,7 @@ const App = () => {
     return (
         <div className="container-fluid">
             <HashRouter>
-                <Route path="/" exact={true}>
+                <Route path={["/","../home"]} exact={true}>
                     <HomePage/>
                 </Route>
                 <Route path={["/customers"]} exact={true}>
@@ -30,6 +31,9 @@ const App = () => {
                 </Route>
                 <Route path="/carts/:id" exact={true}>
                     <CartFormEditor/>
+                </Route>
+                <Route path="/carts/addCart/:id" exact={true}>
+                    <CartAdderForm/>
                 </Route>
                 <Route path="/customerForCart/:id" exact={true}>
                     <CustomerFormEditorByCart/>

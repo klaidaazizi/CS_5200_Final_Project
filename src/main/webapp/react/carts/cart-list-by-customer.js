@@ -15,7 +15,7 @@ const CartListByCustomer = () => {
     return(
         <div>
             <h2>Cart List By Customer</h2>
-            <button className="btn btn-primary" onClick={() => history.push("/carts/new")}>
+            <button className="btn btn-primary" onClick={() => history.push("/carts/addCart/" + id)}>
                 Add Cart
             </button>
             <ul className="list-group">
@@ -34,6 +34,9 @@ const CartListByCustomer = () => {
                         </li>)
                 }
             </ul>
+            <Link to={`/`}>
+                HOME
+            </Link>
         </div>
     )
 }
