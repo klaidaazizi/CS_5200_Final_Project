@@ -22,17 +22,17 @@ public class CustomerRestOrmDao {
         return customerRepository.findAllCustomers();
     }
 
-    @GetMapping("/api/customers/cartId/{id}")
+    @GetMapping("/api/customers/{id}")
     public Customer findCustomerById(
+            @PathVariable("id") Integer id){
+        return customerRepository.findCustomerById(id);
+    }
+
+    @GetMapping("/api/customers/cartId/{id}")
+    public Customer findCustomerByCartId(
             @PathVariable("id") Integer id){
         Integer customerId = cartRepository.findCartById(id).getCustomer().getId();
         return customerRepository.findCustomerById(customerId);
-    }
-
-    @GetMapping("/api/customers/{id}")
-    public Customer findCustomerByCartId(
-            @PathVariable("id") Integer id){
-        return customerRepository.findCustomerById(id);
     }
 
     @DeleteMapping("/api/customers/{id}")

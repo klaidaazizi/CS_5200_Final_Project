@@ -13,8 +13,6 @@ import java.util.List;
 public class CartRestDao {
     @Autowired
     CartRestRepository cartRepository;
-    @Autowired
-    CustomerRestRepository customerRepository;
 
     @GetMapping("/api/carts")
     public List<Cart> findAllCarts(){
@@ -24,7 +22,7 @@ public class CartRestDao {
     @GetMapping("/api/carts/customerId/{id}")
     public List<Cart> findCartsByCustomer(
                     @PathVariable("id") Integer id){
-        return customerRepository.findCustomerById(id).getCarts();
+        return cartRepository.findCartsByCustomer(id);
     }
 
     @GetMapping("/api/carts/{id}")

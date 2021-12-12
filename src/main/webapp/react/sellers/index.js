@@ -1,6 +1,6 @@
 import SellerList from "./seller-list";
 import SellerFormEditor from "./seller-form-editor";
-const {HashRouter, Route} = window.ReactRouterDOM; 
+const {Link} = window.ReactRouterDOM;
 const App = () => {
     return (
         <div className="container-fluid">

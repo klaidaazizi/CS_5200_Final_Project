@@ -8,6 +8,10 @@ export const findCustomerById = (id) =>
     fetch(`${CUSTOMER_URL}/${id}`)
         .then(response => response.json())
 
+export const findCustomerByCartId = (id) =>
+    fetch(`${CUSTOMER_URL}/cartId/${id}`)
+        .then(response => response.json())
+
 export const deleteCustomer = (id) =>
     fetch(`${CUSTOMER_URL}/${id}`, {
         method: "DELETE"
@@ -34,5 +38,6 @@ export default {
     findCustomerById,
     deleteCustomer,
     createCustomer,
-    updateCustomer
+    updateCustomer,
+    findCustomerByCartId
 }

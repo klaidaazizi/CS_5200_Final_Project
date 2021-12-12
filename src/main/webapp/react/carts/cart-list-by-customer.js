@@ -1,19 +1,20 @@
 import cartService from "./cart-service"
 const { useState, useEffect } = React;
-const {Link, useHistory} = window.ReactRouterDOM;
+const {Link, useParams, useHistory} = window.ReactRouterDOM;
 
-const CartList = () => {
+const CartListByCustomer = () => {
+    const {id} = useParams()
     const history = useHistory()
     const [carts, setCarts] = useState([])
     useEffect(() => {
-        findAllCarts()
+        findCartsByCustomer(id)
     }, [])
-    const findAllCarts = () =>
-        cartService.findAllCarts()
+    const findCartsByCustomer = (id) =>
+        cartService.findCartsByCustomer(id)
             .then(carts => setCarts(carts))
     return(
         <div>
-            <h2>Cart List</h2>
+            <h2>Cart List By Customer</h2>
             <button className="btn btn-primary" onClick={() => history.push("/carts/new")}>
                 Add Cart
             </button>
@@ -37,4 +38,4 @@ const CartList = () => {
     )
 }
 
-export default CartList;
+export default CartListByCustomer;

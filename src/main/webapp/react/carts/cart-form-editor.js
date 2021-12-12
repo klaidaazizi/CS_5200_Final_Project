@@ -3,6 +3,7 @@ const {useState, useEffect} = React;
 const {useParams, useHistory} = window.ReactRouterDOM;
 
 const cartFormEditor = () => {
+    const history = useHistory()
     const {id} = useParams()
     const [cart, setCart] = useState({})
     useEffect(() => {

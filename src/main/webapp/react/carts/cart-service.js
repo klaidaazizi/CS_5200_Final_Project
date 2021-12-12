@@ -8,6 +8,10 @@ export const findCartById = (id) =>
     fetch(`${CARTS_URL}/${id}`)
         .then(response => response.json())
 
+export const findCartsByCustomer = (id) =>
+    fetch(`${CARTS_URL}/customerId/${id}`)
+        .then(response => response.json())
+
 export const deleteCart = (id) =>
     fetch(`${CARTS_URL}/${id}`, {
         method: "DELETE"
@@ -34,5 +38,6 @@ export default {
     findCartById,
     deleteCart,
     createCart,
-    updateCart
+    updateCart,
+    findCartsByCustomer
 }
