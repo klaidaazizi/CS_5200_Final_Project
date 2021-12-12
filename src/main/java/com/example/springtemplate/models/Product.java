@@ -30,7 +30,7 @@ public class Product {
     private Seller seller;
 
     @OneToOne
-    @JoinColumn(name="discount_id", referencedColumnName = "id")
+    @JoinColumn(name="discount_id")
     private Discount discount;
 
     public Product(String name, String category, Float price, Integer inventory, Float weight,

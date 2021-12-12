@@ -2,6 +2,7 @@ package com.example.springtemplate.daos;
 
 import com.example.springtemplate.models.Cart;
 import com.example.springtemplate.repositories.CartRestRepository;
+import com.example.springtemplate.repositories.CustomerRestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,10 +13,18 @@ import java.util.List;
 public class CartRestDao {
     @Autowired
     CartRestRepository cartRepository;
+    @Autowired
+    CustomerRestRepository customerRepository;
 
     @GetMapping("/api/carts")
     public List<Cart> findAllCarts(){
         return cartRepository.findAllCarts();
+    }
+
+    @GetMapping("/api/carts/customerId/{id}")
+    public List<Cart> findCartsByCustomer(
+                    @PathVariable("id") Integer id){
+        return customerRepository.findCustomerById(id).getCarts();
     }
 
     @GetMapping("/api/carts/{id}")
