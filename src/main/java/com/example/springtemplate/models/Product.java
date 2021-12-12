@@ -29,8 +29,8 @@ public class Product {
     @JoinColumn(name="seller_id")
     private Seller seller;
 
-    @ManyToOne
-    @JoinColumn(name="discount_id")
+    @OneToOne
+    @JoinColumn(name="discount_id", referencedColumnName = "id")
     private Discount discount;
 
     public Product(String name, String category, Float price, Integer inventory, Float weight,
