@@ -1,5 +1,6 @@
 package com.example.springtemplate.daos;
 
+import com.example.springtemplate.models.Cart;
 import com.example.springtemplate.models.Product;
 import com.example.springtemplate.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,12 @@ public class ProductRestDao {
     @GetMapping("/api/products")
     public List<Product> findAllProducts() {
         return productRepository.findAllProducts();
+    }
+
+    @GetMapping("/api/products/sellerId/{id}")
+    public List<Product> findProductsBySeller(
+            @PathVariable("id") Integer id){
+        return productRepository.findProductsbySeller(id);
     }
 
     @GetMapping("/api/products/{productId}")
@@ -48,4 +55,6 @@ public class ProductRestDao {
             @PathVariable("id") Integer id) {
         productRepository.deleteById(id);
     }
+
+
 }

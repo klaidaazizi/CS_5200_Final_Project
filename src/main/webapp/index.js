@@ -9,8 +9,9 @@ import ProductList from "./react/products/product-list";
 import ProductFormEditor from "./react/products/product-form-editor";
 import SellerList from "./react/sellers/seller-list";
 import SellerFormEditor from "./react/sellers/seller-form-editor";
+import SellerFormEditorByProduct from "./react/sellers/seller-form-editor-by-product"
+import ProductListBySeller from "./react/products/product-list-by-seller";
 import HomePage from "./home.js"
-
 
 const {HashRouter, Route} = window.ReactRouterDOM;
 const App = () => {
@@ -52,6 +53,12 @@ const App = () => {
                 </Route>
                 <Route path="/sellers/:id" exact={true}>
                     <SellerFormEditor/>
+                </Route>
+                <Route path="/sellerForProduct/:id" exact={true}>
+                    <SellerFormEditorByProduct/>
+                </Route>
+                <Route path="/productsBySeller/:id" exact={true}>
+                    <ProductListBySeller/>
                 </Route>
             </HashRouter>
         </div>

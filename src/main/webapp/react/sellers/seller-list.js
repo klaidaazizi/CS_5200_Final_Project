@@ -27,7 +27,6 @@ const SellerList = () => {
                                 {seller.yearFounded},
                                 {seller.firstName},
                                 {seller.lastName},
-
                             </Link>
                         </li>)
                 }
