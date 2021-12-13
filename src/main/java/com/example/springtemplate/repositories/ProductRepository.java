@@ -13,7 +13,7 @@ public interface ProductRepository
             nativeQuery = true)
     List<Product> findAllProducts();
 
-    @Query(value = "SELECT * FROM products WHERE products.product_id=:id",
+    @Query(value = "SELECT * FROM products WHERE products.seller_id=:id",
             nativeQuery = true)
     List<Product> findProductsBySeller(@Param("id") Integer id);
 
