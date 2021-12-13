@@ -15,7 +15,7 @@ import FollowListBySeller from "./react/follows/follow-list-by-seller.js"
 import FollowNewCustomer from "./react/follows/follow-new-customer.js"
 import FollowNewSeller from "./react/follows/follow-new-seller.js"
 import SellerFormEditorByProduct from "./react/sellers/seller-form-editor-by-product"
-import ProductListBySeller from "./react/products/product-list-by-seller";
+import ProductListBySeller from "./react/products/product-list-by-sellers";
 import HomePage from "./home.js"
 
 const {HashRouter, Route} = window.ReactRouterDOM;

@@ -1,6 +1,6 @@
 import productService from "./product-service"
-const { useState, useParams, useEffect } = React;
-const {Link, useHistory} = window.ReactRouterDOM;
+const { useState, useEffect } = React;
+const {Link,useParams, useHistory} = window.ReactRouterDOM;
 
 const ProductListBySeller = () => {
     const {id} = useParams()
@@ -32,10 +32,10 @@ const ProductListBySeller = () => {
                                 {product.ageGroup},
                                 {product.discount}
                             </Link>
+                            <br/>
                             <Link to={`/sellerForProduct/${product.id}`}>
-                                                            Link to Seller
-                                                        </Link>
-
+                                Link to Seller
+                            </Link>
 
                         </li>)
                 }
@@ -43,4 +43,4 @@ const ProductListBySeller = () => {
         </div>
     )
 }
-export default ProductListBySellers;
+export default ProductListBySeller;

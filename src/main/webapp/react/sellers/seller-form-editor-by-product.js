@@ -1,4 +1,4 @@
-import sellerService, {findSellerByProductId} from "./seller-service"
+import sellerService, {findSellerByProductId} from "./seller-service";
 const {useState, useEffect} = React;
 const {Link, useParams, useHistory} = window.ReactRouterDOM;
 
