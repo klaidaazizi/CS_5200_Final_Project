@@ -3,7 +3,6 @@ const { useState, useEffect } = React;
 const {Link, useHistory} = window.ReactRouterDOM;
 
 const CartList = () => {
-    const history = useHistory()
     const [carts, setCarts] = useState([])
     useEffect(() => {
         findAllCarts()
@@ -27,7 +26,7 @@ const CartList = () => {
                                 {cart.payment}
                             </Link>
                             <br/>
-                            <Link to={`/customerForCart/${cart.id}`}>
+                            <Link to={`/customers/${cart.customer.id}`}>
                                 Link to Customer
                             </Link>
                         </li>)

@@ -1,6 +1,6 @@
 import sellerService from "./seller-service"
 const {useState, useEffect} = React;
-const {useParams, useHistory} = window.ReactRouterDOM;
+const {Link, useParams, useHistory} = window.ReactRouterDOM;
 
 const SellerFormEditor = () => {
     const {id} = useParams()
@@ -25,6 +25,14 @@ const SellerFormEditor = () => {
     return (
         <div>
             <h2>Seller Editor</h2>
+            <Link to={`/`}>
+                HOME
+            </Link>
+            <br/>
+            <Link to={`/follows/bySeller/${seller.id}`}>
+                Link to Followed Customers
+            </Link>
+            <br/>
             <label>ID</label>
             <input value={seller.id}/><br/>
             <label>Company Name</label>

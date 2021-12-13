@@ -9,6 +9,11 @@ import ProductList from "./react/products/product-list";
 import ProductFormEditor from "./react/products/product-form-editor";
 import SellerList from "./react/sellers/seller-list";
 import SellerFormEditor from "./react/sellers/seller-form-editor";
+import FollowList from "./react/follows/follow-list.js"
+import FollowListByCustomer from "./react/follows/follow-list-by-customer.js"
+import FollowListBySeller from "./react/follows/follow-list-by-seller.js"
+import FollowNewCustomer from "./react/follows/follow-new-customer.js"
+import FollowNewSeller from "./react/follows/follow-new-seller.js"
 import HomePage from "./home.js"
 
 
@@ -52,6 +57,21 @@ const App = () => {
                 </Route>
                 <Route path="/sellers/:id" exact={true}>
                     <SellerFormEditor/>
+                </Route>
+                <Route path={"/follows"} exact={true}>
+                    <FollowList/>
+                </Route>
+                <Route path={"/follows/byCustomer/:id"} exact={true}>
+                    <FollowListByCustomer/>
+                </Route>
+                <Route path={"/follows/bySeller/:id"} exact={true}>
+                    <FollowListBySeller/>
+                </Route>
+                <Route path={"/follow/followNewCustomer/:sellerId"} exact={true}>
+                    <FollowNewCustomer/>
+                </Route>
+                <Route path={"/follow/followNewSeller/:customerId"} exact={true}>
+                    <FollowNewSeller/>
                 </Route>
             </HashRouter>
         </div>

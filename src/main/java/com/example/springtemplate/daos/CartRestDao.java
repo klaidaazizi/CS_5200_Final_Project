@@ -7,6 +7,7 @@ import com.example.springtemplate.repositories.CustomerRestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -54,6 +55,8 @@ public class CartRestDao {
                            @PathVariable("id") Integer id) {
         Customer customer = customerRepository.findCustomerById(id);
         cart.setCustomer(customer);
+        Date date = new Date();
+        cart.setCreatedDate(date.toString());
         return cartRepository.save(cart);
     }
 

@@ -3,7 +3,6 @@ const {useState, useEffect} = React;
 const {Link, useParams, useHistory} = window.ReactRouterDOM;
 
 const CustomerFormEditorByCart = () => {
-    const history = useHistory()
     const {id} = useParams()
     const [customer, setCustomer] = useState({})
     useEffect(() => {

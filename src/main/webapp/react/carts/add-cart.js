@@ -3,7 +3,6 @@ const {useState, useEffect} = React;
 const {Link, useParams, useHistory} = window.ReactRouterDOM;
 
 const cartAdderForm = () => {
-    const history = useHistory()
     const {id} = useParams()
     const [cart, setCart] = useState({})
     useEffect(() => {}, []);
@@ -15,13 +14,6 @@ const cartAdderForm = () => {
             <h2>Cart Editor</h2>
             <label>ID</label>
             <input value={cart.id}/><br/>
-            <label>Created Date</label>
-            <input
-                onChange={(e) =>
-                    setCart(cart =>
-                        ({...cart, createdDate: e.target.value}))}
-                value={cart.createdDate}/>
-            <br/>
             <label>Payment Type</label>
             <input
                 onChange={(e) =>

@@ -3,7 +3,6 @@ const {useState, useEffect} = React;
 const {Link, useParams, useHistory} = window.ReactRouterDOM;
 
 const CustomerFormEditor = () => {
-    const history = useHistory()
     const {id} = useParams()
     const [customer, setCustomer] = useState({})
     useEffect(() => {
@@ -32,6 +31,10 @@ const CustomerFormEditor = () => {
             <br/>
             <Link to={`/cartsByCustomer/${customer.id}`}>
                 Link to Carts
+            </Link>
+            <br/>
+            <Link to={`/follows/byCustomer/${customer.id}`}>
+                Link to Followed Sellers
             </Link>
             <br/>
             <label>ID</label>

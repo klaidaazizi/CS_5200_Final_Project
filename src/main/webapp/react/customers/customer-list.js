@@ -3,7 +3,6 @@ const { useState, useEffect } = React;
 const {Link, useHistory} = window.ReactRouterDOM;
 
 const CustomerList = () => {
-    const history = useHistory()
     const [customer, setCustomers] = useState([])
     useEffect(() => {
         findAllCustomers()

@@ -1,6 +1,7 @@
 package com.example.springtemplate.models;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "follows")
@@ -13,9 +14,9 @@ public class Follow {
     public Seller seller;
     @ManyToOne
     public Customer customer;
-    public String dateCreated;
+    public Date dateCreated;
 
-    public Follow(Seller seller, Customer customer, String dateCreated){
+    public Follow(Seller seller, Customer customer, Date dateCreated){
         this.dateCreated = dateCreated;
         this.seller = seller;
         this.customer = customer;
@@ -47,11 +48,11 @@ public class Follow {
         this.customer = customer;
     }
 
-    public String getDateCreated() {
+    public Date getDateCreated() {
         return dateCreated;
     }
 
-    public void setDateCreated(String dateCreated) {
+    public void setDateCreated(Date dateCreated) {
         this.dateCreated = dateCreated;
     }
 }
