@@ -1,8 +1,9 @@
 import sellerService, {findSellerByProductId} from "./seller-service"
 const {useState, useEffect} = React;
-const {useParams, useHistory} = window.ReactRouterDOM;
+const {Link, useParams, useHistory} = window.ReactRouterDOM;
 
 const SellerFormEditorByProduct = () => {
+    const history = useHistory()
     const {id} = useParams()
     const [seller, setSeller] = useState({})
     useEffect(() => {
@@ -11,9 +12,6 @@ const SellerFormEditorByProduct = () => {
     const createSeller = (seller) =>
         sellerService.createSeller(seller)
             .then(() => history.back())
-    const findSellerById = (id) =>
-        sellerService.findSellerById(id)
-            .then(seller => setSeller(seller))
     const findSellerByProductId = (id)   =>
         sellerService.findSellerByProductId(id)
                 .then(seller => setSeller(seller))

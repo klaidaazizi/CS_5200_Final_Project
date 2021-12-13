@@ -3,6 +3,7 @@ const { useState, useParams, useEffect } = React;
 const {Link, useHistory} = window.ReactRouterDOM;
 
 const ProductListBySeller = () => {
+    const {id} = useParams()
     const history = useHistory()
     const [products, setProducts] = useState([])
     useEffect(() => {

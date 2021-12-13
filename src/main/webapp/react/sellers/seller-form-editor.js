@@ -1,8 +1,9 @@
 import sellerService from "./seller-service"
 const {useState, useEffect} = React;
-const {useParams, useHistory} = window.ReactRouterDOM;
+const {Link, useParams, useHistory} = window.ReactRouterDOM;
 
 const SellerFormEditor = () => {
+    const history = useHistory()
     const {id} = useParams()
     const [seller, setSeller] = useState({})
     useEffect(() => {
@@ -25,6 +26,12 @@ const SellerFormEditor = () => {
     return (
         <div>
             <h2>Seller Editor</h2>
+            <br/>
+            <Link to={`/productsBySeller/${seller.id}`}>
+                Link to Products
+            </Link>
+            <br/>
+
             <label>ID</label>
             <input value={seller.id}/><br/>
             <label>Company Name</label>
