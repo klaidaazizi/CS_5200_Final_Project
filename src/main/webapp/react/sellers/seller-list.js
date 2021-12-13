@@ -31,6 +31,10 @@ const SellerList = () => {
                         </li>)
                 }
             </ul>
+
+            <Link to={`/`}>
+                HOME
+            </Link>
         </div>
     )
 }

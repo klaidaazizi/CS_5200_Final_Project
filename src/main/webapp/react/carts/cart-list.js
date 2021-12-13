@@ -3,6 +3,7 @@ const { useState, useEffect } = React;
 const {Link, useHistory} = window.ReactRouterDOM;
 
 const CartList = () => {
+    const history = useHistory()
     const [carts, setCarts] = useState([])
     useEffect(() => {
         findAllCarts()

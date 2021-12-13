@@ -3,7 +3,6 @@ const {useState, useEffect} = React;
 const {Link, useParams, useHistory} = window.ReactRouterDOM;
 
 const SellerFormEditorByProduct = () => {
-    const history = useHistory()
     const {id} = useParams()
     const [seller, setSeller] = useState({})
     useEffect(() => {
@@ -139,6 +138,11 @@ const SellerFormEditorByProduct = () => {
             <button className="btn btn-success" onClick={() => createSeller(seller)}>
                 Create
             </button>
+
+
+            <Link to={`/`}>
+                HOME
+            </Link>
 
         </div>
     )

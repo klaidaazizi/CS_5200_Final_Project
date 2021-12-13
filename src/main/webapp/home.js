@@ -1,8 +1,12 @@
 
 const {Link} = window.ReactRouterDOM;
+
+
 const Home = () => {
     return (
         <div className="container-fluid">
+            <h1>E-Commerce Database</h1>
+            <h3>Log-in as Seller or Customer</h3>
             <Link to={`/products`}>
                 Products
             </Link>
@@ -13,10 +17,6 @@ const Home = () => {
             <br/>
             <Link to={`/sellers`}>
                 Sellers
-            </Link>
-            <br/>
-            <Link to={`/carts`}>
-                Carts
             </Link>
             <br/>
         </div>
