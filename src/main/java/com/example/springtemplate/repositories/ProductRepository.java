@@ -1,7 +1,6 @@
 package com.example.springtemplate.repositories;
 
 import com.example.springtemplate.models.Product;
-import com.example.springtemplate.models.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -13,6 +12,10 @@ public interface ProductRepository
     @Query(value = "SELECT * FROM products",
             nativeQuery = true)
     List<Product> findAllProducts();
+
+    @Query(value = "SELECT * FROM products WHERE products.product_id=:id",
+            nativeQuery = true)
+    List<Product> findProductsbySeller(@Param("id") Integer id);
 
     @Query(value = "SELECT * FROM products WHERE product_id=:id",
             nativeQuery = true)

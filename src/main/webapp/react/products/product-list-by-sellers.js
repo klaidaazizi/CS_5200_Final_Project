@@ -1,19 +1,20 @@
 import productService from "./product-service"
-const { useState, useEffect } = React;
+const { useState, useParams, useEffect } = React;
 const {Link, useHistory} = window.ReactRouterDOM;
 
-const ProductList = () => {
+const ProductListBySeller = () => {
+    const {id} = useParams()
     const history = useHistory()
     const [products, setProducts] = useState([])
     useEffect(() => {
-        findAllProducts()
+        findProductsBySeller(id)
     }, [])
-    const findAllProducts = () =>
-        productService.findAllProducts()
-            .then(products => setProducts(products))
+    const findProductsBySeller = (id) =>
+            productService.findProductsBySeller(id)
+                .then(products => setProducts(products))
     return(
         <div>
-            <h2>Product List</h2>
+            <h2>Product List by Seller</h2>
             <button className="btn btn-primary" onClick={() => history.push("/products/new")}>
                 Add Product
             </button>
@@ -31,10 +32,10 @@ const ProductList = () => {
                                 {product.ageGroup},
                                 {product.discount}
                             </Link>
-                             <br/>
-                             <Link to={`/productForSeller/${product.id}`}>
-                                Link to Seller
-                            </Link>
+                            <Link to={`/sellerForProduct/${product.id}`}>
+                                                            Link to Seller
+                                                        </Link>
+
 
                         </li>)
                 }
@@ -42,5 +43,4 @@ const ProductList = () => {
         </div>
     )
 }
-
-export default ProductList;
+export default ProductListBySellers;
