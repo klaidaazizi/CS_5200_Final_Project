@@ -24,8 +24,10 @@ const OrderListByProduct = () => {
                         <li className="list-group-item"
                             key={order.id}>
                             <Link to={`/orders/${order.id}`}>
-                                {order.createdDate},
-                                {order.shippedDate}
+                                {"Cart Name: " + order.cart.name}
+                                {" | Payment Type: " + order.cart.payment}
+                                {" | Customer Name: " + order.cart.customer.firstName}
+                                {" " + order.cart.customer.lastName}
                             </Link>
                             <br/>
                             <Link to={`/products/${order.product.id}`}>
