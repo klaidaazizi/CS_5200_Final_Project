@@ -5,6 +5,7 @@ const Home = () => {
     return (
         <div className="container-fluid">
             <h1>E-Commerce Database</h1>
+            <br/>
             <h3>Log-in as Seller or Customer</h3>
             <Link to={`/customers`}>
                 Customers

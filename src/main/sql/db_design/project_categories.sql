@@ -34,7 +34,7 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES ('Books'),('Electronics'),('Fashion'),('Food'),('Home'),('Office Supplies');
+INSERT INTO `categories` VALUES ('Books'),('Electronics'),('Fashion'),('Food'),('Home'),('Office Supplies'),('Pet');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -47,4 +47,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-06 17:44:59
+-- Dump completed on 2021-12-14 14:48:27
