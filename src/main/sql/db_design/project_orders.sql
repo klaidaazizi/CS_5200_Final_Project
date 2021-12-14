@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.26, for macos11 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.26, for Win64 (x86_64)
 --
 -- Host: localhost    Database: project
 -- ------------------------------------------------------
@@ -31,10 +31,10 @@ CREATE TABLE `orders` (
   `product_id` int NOT NULL,
   PRIMARY KEY (`order_id`),
   KEY `order_to_cart_idx` (`cart_id`),
-  KEY `order_to_product_idx` (`product_id`),
-  CONSTRAINT `order_to_cart` FOREIGN KEY (`cart_id`) REFERENCES `carts` (`cart_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `order_to_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `order_to_products_idx` (`product_id`),
+  CONSTRAINT `order_to_cart` FOREIGN KEY (`cart_id`) REFERENCES `carts` (`cart_id`),
+  CONSTRAINT `order_to_products` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,'2021-11-20 00:00:00','2021-11-22 00:00:00',2,1,1),(2,'2021-11-01 00:00:00','2021-11-10 00:00:00',4,2,2);
+INSERT INTO `orders` VALUES (3,'2020-01-01 00:00:00','2020-01-20 00:00:00',10,1,3);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-22 15:56:57
+-- Dump completed on 2021-12-06 17:45:00

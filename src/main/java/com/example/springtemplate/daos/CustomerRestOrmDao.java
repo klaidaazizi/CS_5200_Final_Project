@@ -2,6 +2,7 @@ package com.example.springtemplate.daos;
 
 import com.example.springtemplate.models.Customer;
 import com.example.springtemplate.models.User;
+import com.example.springtemplate.repositories.CartRestRepository;
 import com.example.springtemplate.repositories.CustomerRestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,31 +14,40 @@ import java.util.List;
 public class CustomerRestOrmDao {
     @Autowired
     CustomerRestRepository customerRepository;
+    @Autowired
+    CartRestRepository cartRepository;
 
     @GetMapping("/api/customers")
-    public List<Customer> findAllSellers(){
+    public List<Customer> findAllCustomers(){
         return customerRepository.findAllCustomers();
     }
 
     @GetMapping("/api/customers/{id}")
-    public Customer findSellerById(
+    public Customer findCustomerById(
             @PathVariable("id") Integer id){
         return customerRepository.findCustomerById(id);
     }
 
+    @GetMapping("/api/customers/cartId/{id}")
+    public Customer findCustomerByCartId(
+            @PathVariable("id") Integer id){
+        Integer customerId = cartRepository.findCartById(id).getCustomer().getId();
+        return customerRepository.findCustomerById(customerId);
+    }
+
     @DeleteMapping("/api/customers/{id}")
-    public void deleteSeller(
+    public void deleteCustomer(
             @PathVariable("id") Integer id) {
         customerRepository.deleteById(id);
     }
 
     @PostMapping("/api/customers")
-    public User createUser(@RequestBody Customer customer) {
+    public User createCustomer(@RequestBody Customer customer) {
         return customerRepository.save(customer);
     }
 
     @PutMapping("/api/customers/{id}")
-    public User updateSeller(
+    public User updateCustomer(
             @PathVariable("id") Integer id,
             @RequestBody Customer customerUpdates) {
         Customer customer = customerRepository.findCustomerById(id);

@@ -1,21 +1,19 @@
-import sellerService from "./seller-service"
+import sellerService, {findSellerByProductId} from "./seller-service";
 const {useState, useEffect} = React;
 const {Link, useParams, useHistory} = window.ReactRouterDOM;
 
-const SellerFormEditor = () => {
+const SellerFormEditorByProduct = () => {
     const {id} = useParams()
     const [seller, setSeller] = useState({})
     useEffect(() => {
-        if(id !== "new") {
-            findSellerById(id)
-        }
-    }, []);
+        findSellerByProductId(id)
+        }, []);
     const createSeller = (seller) =>
         sellerService.createSeller(seller)
             .then(() => history.back())
-    const findSellerById = (id) =>
-        sellerService.findSellerById(id)
-            .then(seller => setSeller(seller))
+    const findSellerByProductId = (id)   =>
+        sellerService.findSellerByProductId(id)
+                .then(seller => setSeller(seller))
     const deleteSeller = (id) =>
         sellerService.deleteSeller(id)
             .then(() => history.back())
@@ -25,19 +23,11 @@ const SellerFormEditor = () => {
     return (
         <div>
             <h2>Seller Editor</h2>
-            <Link to={`/`}>
-                HOME
-            </Link>
-            <br/>
-            <Link to={`/follows/bySeller/${seller.id}`}>
-                Link to Followed Customers
-            </Link>
-            <br/>
-            <br/>
+
             <Link to={`/productsBySeller/${seller.id}`}>
-                Link to Products
-            </Link>
-            <br/>
+                            Link to Products
+                        </Link>
+                        <br/>
             <label>ID</label>
             <input value={seller.id}/><br/>
             <label>Company Name</label>
@@ -149,8 +139,13 @@ const SellerFormEditor = () => {
                 Create
             </button>
 
+
+            <Link to={`/`}>
+                HOME
+            </Link>
+
         </div>
     )
 }
 
-export default SellerFormEditor
+export default SellerFormEditorByProduct

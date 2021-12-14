@@ -14,13 +14,13 @@ public class Customer extends User {
 
     @OneToMany (mappedBy = "customer")
     @JsonIgnore
-    public Set<Follow> follows;
+    public List<Follow> follows;
 
     @OneToMany(mappedBy = "customer")
     @JsonIgnore
     public List<Cart> carts;
 
-    public Customer(Integer age, String profilePicture, Set<Follow> follows) {
+    public Customer(Integer age, String profilePicture, List<Follow> follows) {
         this.age = age;
         this.profilePicture = profilePicture;
         this.follows = follows;
@@ -52,11 +52,11 @@ public class Customer extends User {
         this.carts = carts;
     }
 
-    public Set<Follow> getFollows() {
+    public List<Follow> getFollows() {
         return this.follows;
     }
 
-    public void setFollows(Set<Follow> follows) {
+    public void setFollows(List<Follow> follows) {
         if (!(this.follows == null)) {
             this.follows.addAll(follows);
         }

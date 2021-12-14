@@ -26,11 +26,15 @@ const SellerList = () => {
                                 {seller.companyName},
                                 {seller.yearFounded},
                                 {seller.firstName},
-                                {seller.lastName}
+                                {seller.lastName},
                             </Link>
                         </li>)
                 }
             </ul>
+
+            <Link to={`/`}>
+                HOME
+            </Link>
         </div>
     )
 }

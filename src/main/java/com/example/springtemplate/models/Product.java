@@ -22,20 +22,20 @@ public class Product {
     private Integer ageGroup;
 
     @OneToMany(mappedBy = "product")
+    @JsonIgnore
     private List<Order> orders = new ArrayList<>();
 
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name="seller_id")
     private Seller seller;
 
-    @ManyToOne
-    @JsonIgnore
+    @OneToOne
     @JoinColumn(name="discount_id")
     private Discount discount;
 
     public Product(String name, String category, Float price, Integer inventory, Float weight,
                    Integer ageGroup, List<Order> orders, Seller seller, Discount discount) {
+
         this.name = name;
         this.category = category;
         this.price = price;

@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.26, for macos11 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.26, for Win64 (x86_64)
 --
 -- Host: localhost    Database: project
 -- ------------------------------------------------------
@@ -24,15 +24,21 @@ DROP TABLE IF EXISTS `follows`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `follows` (
   `follow_id` int NOT NULL AUTO_INCREMENT,
-  `customer_id` int NOT NULL,
-  `seller_id` int NOT NULL,
-  `date_created` datetime DEFAULT CURRENT_TIMESTAMP,
+  `seller` int NOT NULL,
+  `customer` int NOT NULL,
+  `date_created` date NOT NULL,
+  `customer_id` int DEFAULT NULL,
+  `seller_id` int DEFAULT NULL,
   PRIMARY KEY (`follow_id`),
-  KEY `follows_to_customers` (`customer_id`),
-  KEY `follows_to_sellers_idx` (`seller_id`),
-  CONSTRAINT `follows_to_customers` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `follows_to_sellers` FOREIGN KEY (`seller_id`) REFERENCES `sellers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `follow_to_customer_idx` (`customer`),
+  KEY `follow_to_seller_idx` (`seller`),
+  KEY `FK8wjsefmwtlm62aoch4w9n1has` (`customer_id`),
+  KEY `FKay06ugvhgjhj7kq38fjt0bfka` (`seller_id`),
+  CONSTRAINT `FK8wjsefmwtlm62aoch4w9n1has` FOREIGN KEY (`customer_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `FKay06ugvhgjhj7kq38fjt0bfka` FOREIGN KEY (`seller_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `follow_to_customer` FOREIGN KEY (`customer`) REFERENCES `users` (`id`),
+  CONSTRAINT `follow_to_seller` FOREIGN KEY (`seller`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +47,6 @@ CREATE TABLE `follows` (
 
 LOCK TABLES `follows` WRITE;
 /*!40000 ALTER TABLE `follows` DISABLE KEYS */;
-INSERT INTO `follows` VALUES (2,1,'Apple Seller','2021-11-21 10:22:03'),(3,1,'Other Apple Seller','2021-11-21 10:22:14'),(4,2,'Apple Seller','2021-11-21 10:22:27');
 /*!40000 ALTER TABLE `follows` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-22 15:56:57
+-- Dump completed on 2021-12-06 17:44:59

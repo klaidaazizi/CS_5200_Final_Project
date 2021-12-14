@@ -17,7 +17,7 @@ public class DiscountProductDao {
             @PathVariable("discountId")Integer discountId) {
         Discount discount = discountRepository.findById(discountId).get();
         Product product = productRepository.findById(productId).get();
-        discount.getProducts().add(product);
+        discount.setProduct(product);
         product.setDiscount(discount);
         productRepository.save(product);
         return discount;

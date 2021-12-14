@@ -1,20 +1,18 @@
-import customerService from "./customer-service";
+import customerService, {findCustomerByCartId} from "./customer-service";
 const {useState, useEffect} = React;
 const {Link, useParams, useHistory} = window.ReactRouterDOM;
 
-const CustomerFormEditor = () => {
+const CustomerFormEditorByCart = () => {
     const {id} = useParams()
     const [customer, setCustomer] = useState({})
     useEffect(() => {
-        if(id !== "new") {
-            findCustomerById(id)
-        }
+        findCustomerByCartId(id)
     }, []);
     const createCustomer = (customer) =>
         customerService.createCustomer(customer)
             .then(() => history.back())
-    const findCustomerById = (id) =>
-        customerService.findCustomerById(id)
+    const findCustomerByCartId = (id) =>
+        customerService.findCustomerByCartId(id)
             .then(customer => setCustomer(customer))
     const deleteCustomer = (id) =>
         customerService.deleteCustomer(id)
@@ -31,10 +29,6 @@ const CustomerFormEditor = () => {
             <br/>
             <Link to={`/cartsByCustomer/${customer.id}`}>
                 Link to Carts
-            </Link>
-            <br/>
-            <Link to={`/follows/byCustomer/${customer.id}`}>
-                Link to Followed Sellers
             </Link>
             <br/>
             <label>ID</label>
@@ -131,8 +125,8 @@ const CustomerFormEditor = () => {
             <br/>
             <br/>
             <button className="btn btn-warning"
-                onClick={() => {
-                    history.back()}}>
+                    onClick={() => {
+                        history.back()}}>
                 Cancel
             </button>
             <button className="btn btn-danger"
@@ -140,7 +134,7 @@ const CustomerFormEditor = () => {
                 Delete
             </button>
             <button className="btn btn-success"
-                onClick={() => updateCustomer(customer.id, customer)}>
+                    onClick={() => updateCustomer(customer.id, customer)}>
                 Save
             </button>
 
@@ -152,4 +146,4 @@ const CustomerFormEditor = () => {
     )
 }
 
-export default CustomerFormEditor
+export default CustomerFormEditorByCart

@@ -13,6 +13,10 @@ public interface CartRestRepository extends CrudRepository<Cart, Integer> {
             nativeQuery = true)
     List<Cart> findAllCarts();
 
+    @Query(value = "SELECT * FROM carts WHERE carts.customer_id=:id",
+            nativeQuery = true)
+    List<Cart> findCartsByCustomer(@Param("id") Integer id);
+
     @Query(value = "SELECT * FROM carts\n" +
             "WHERE carts.cart_id=:cartId",
             nativeQuery = true)

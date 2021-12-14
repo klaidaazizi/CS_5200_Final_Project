@@ -18,18 +18,17 @@ public class Discount {
     private String endDate;
     private Integer percent;
 
-    @OneToMany(mappedBy = "discount")
-    private List<Product> products;
+    @OneToOne(mappedBy = "discount")
+    private Product product;
 
-
-    public Discount(Integer discountId, String title, String description, String startDate, String endDate, Integer percent, List<Product> products) {
+    public Discount(Integer discountId, String title, String description, String startDate, String endDate, Integer percent, Product product) {
         this.discountId = discountId;
         this.title = title;
         this.description = description;
         this.startDate = startDate;
         this.endDate = endDate;
         this.percent = percent;
-        this.products = products;
+        this.product = product;
     }
 
     public Discount() {
@@ -80,12 +79,12 @@ public class Discount {
         this.percent = percent;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
 

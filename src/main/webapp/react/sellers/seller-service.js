@@ -8,6 +8,10 @@ export const findSellerById = (id) =>
     fetch(`${SELLERS_URL}/${id}`)
         .then(response => response.json())
 
+export const findSellerByProductId = (id) =>
+    fetch(`${SELLERS_URL}/productId/${id}`)
+        .then(response => response.json())
+
 export const deleteSeller = (id) =>
     fetch(`${SELLERS_URL}/${id}`, {
         method: "DELETE"
@@ -34,5 +38,6 @@ export default {
     findSellerById,
     deleteSeller,
     createSeller,
-    updateSeller
+    updateSeller,
+    findSellerByProductId
 }
