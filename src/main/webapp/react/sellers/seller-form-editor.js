@@ -33,7 +33,6 @@ const SellerFormEditor = () => {
                 Link to Followed Customers
             </Link>
             <br/>
-            <br/>
             <Link to={`/productsBySeller/${seller.id}`}>
                 Link to Products
             </Link>

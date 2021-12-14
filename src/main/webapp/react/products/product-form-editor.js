@@ -29,7 +29,7 @@ const ProductFormEditor = () => {
             <Link to={`/ordersByProduct/${product.id}`}>
                 Link to Orders
             </Link>
-
+            <br/>
             <label>ID</label>
             <input value={product.id}/><br/>
             <label>Name</label>
