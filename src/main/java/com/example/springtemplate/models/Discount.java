@@ -20,9 +20,9 @@ public class Discount {
     private String endDate;
     private Integer percent;
 
-    @OneToOne(mappedBy = "discount")
-    @JsonIgnore
-    private Product product;
+    @OneToOne
+    @JoinColumn(name = "product_id")
+    public Product product;
 
     public Discount(Integer discountId, String title, String description, String startDate, String endDate, Integer percent, Product product) {
         this.discountId = discountId;

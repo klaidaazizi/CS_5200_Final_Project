@@ -17,6 +17,7 @@ public interface OrderRestRepository extends CrudRepository<Order, Integer> {
             nativeQuery = true)
     List<Order> findOrdersByProduct(@Param("id") Integer id);
 
+
     @Query(value = "SELECT * FROM orders\n" +
             "WHERE orders.order_id=:orderId",
             nativeQuery = true)

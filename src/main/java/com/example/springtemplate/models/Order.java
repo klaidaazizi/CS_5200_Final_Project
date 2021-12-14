@@ -10,18 +10,19 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
-    private Integer orderId;
+    public Integer id;
     @Column(name="date_created")
-    private String createdDate;
+    public String createdDate;
     @Column(name="date_shipped")
-    private String shippedDate;
+    public String shippedDate;
 
     @ManyToOne
-    private Product product;
+    @JoinColumn(name = "product_id")
+    public Product product;
 
     @ManyToOne
-    @JsonIgnore
-    private Cart cart;
+    @JoinColumn(name = "cart_id")
+    public Cart cart;
 
     public Order(String createdDate, String shippedDate, Product product, Cart cart) {
         this.createdDate = createdDate;
@@ -31,15 +32,14 @@ public class Order {
     }
 
     public Order() {
-
     }
 
     public Integer getOrderId() {
-        return orderId;
+        return id;
     }
 
-    public void setOrderId(Integer orderId) {
-        this.orderId = orderId;
+    public void setOrderId(Integer id) {
+        this.id = id;
     }
 
     public String getCreatedDate() {
