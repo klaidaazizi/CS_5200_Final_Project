@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface ProductRepository
+public interface ProductRestRepository
         extends CrudRepository<Product, Integer> {
     @Query(value = "SELECT * FROM products",
             nativeQuery = true)

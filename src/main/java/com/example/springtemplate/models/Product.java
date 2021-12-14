@@ -7,7 +7,6 @@ import java.util.List;
 
 @Entity
 @Table(name = "products")
-
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,14 +22,13 @@ public class Product {
 
     @OneToMany(mappedBy = "product")
     @JsonIgnore
-    private List<Order> orders = new ArrayList<>();
+    private List<Order> orders;
 
     @ManyToOne
-    @JoinColumn(name="seller_id")
     private Seller seller;
 
     @OneToOne
-    @JoinColumn(name="discount_id")
+    @JoinColumn(name = "discount_id", referencedColumnName = "discount_id")
     private Discount discount;
 
     public Product(String name, String category, Float price, Integer inventory, Float weight,

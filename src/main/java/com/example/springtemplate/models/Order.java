@@ -17,11 +17,10 @@ public class Order {
     private String shippedDate;
 
     @ManyToOne
-    @JoinColumn(name="product_id")
     private Product product;
 
     @ManyToOne
-    @JoinColumn(name="cart_id")
+    @JsonIgnore
     private Cart cart;
 
     public Order(String createdDate, String shippedDate, Product product, Cart cart) {

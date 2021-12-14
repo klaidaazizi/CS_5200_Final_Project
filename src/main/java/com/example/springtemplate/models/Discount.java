@@ -1,5 +1,7 @@
 package com.example.springtemplate.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -8,7 +10,7 @@ import java.util.List;
 public class Discount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
+    @Column(name = "discount_id")
     private Integer discountId;
     private String title;
     private String description;
@@ -19,6 +21,7 @@ public class Discount {
     private Integer percent;
 
     @OneToOne(mappedBy = "discount")
+    @JsonIgnore
     private Product product;
 
     public Discount(Integer discountId, String title, String description, String startDate, String endDate, Integer percent, Product product) {
