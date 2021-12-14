@@ -1,7 +1,6 @@
 
 const {Link} = window.ReactRouterDOM;
 
-
 const Home = () => {
     return (
         <div className="container-fluid">

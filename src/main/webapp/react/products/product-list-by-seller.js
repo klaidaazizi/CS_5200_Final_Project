@@ -1,4 +1,4 @@
-import productService, {findProductsBySellerId} from "./product-service"
+import productService, {findProductsBySeller} from "./product-service"
 const { useState, useEffect } = React;
 const {Link,useParams, useHistory} = window.ReactRouterDOM;
 
@@ -10,7 +10,7 @@ const ProductListBySeller = () => {
         findProductsBySeller(id)
     }, [])
     const findProductsBySeller = (id) =>
-            productService.findProductsBySellerId(id)
+            productService.findProductsBySeller(id)
                 .then(products => setProducts(products))
     return(
         <div>
@@ -33,7 +33,7 @@ const ProductListBySeller = () => {
                                 {product.discount}
                             </Link>
                             <br/>
-                            <Link to={`/sellerForProduct/${product.id}`}>
+                            <Link to={`/sellers/${product.seller.id}`}>
                                 Link to Seller
                             </Link>
 

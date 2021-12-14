@@ -32,10 +32,9 @@ const ProductList = () => {
                                 {product.discount}
                             </Link>
                              <br/>
-                             <Link to={`/productForSeller/${product.id}`}>
+                            <Link to={`/sellers/${product.seller.id}`}>
                                 Link to Seller
                             </Link>
-
                         </li>)
                 }
             </ul>

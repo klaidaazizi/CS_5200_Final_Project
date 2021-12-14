@@ -11,19 +11,19 @@ public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="cart_id")
-    private Integer id;
+    public Integer id;
     @Column(name="created_date")
-    private String createdDate;
+    public String createdDate;
     @Column(name = "payment_type")
     @Enumerated(EnumType.STRING)
-    private Payment payment;
+    public Payment payment;
 
     @OneToMany(mappedBy = "cart")
     @JsonIgnore
-    private List<Order> orders;
+    public List<Order> orders;
 
     @ManyToOne
-    private Customer customer;
+    public Customer customer;
 
     public Cart(String createdDate, Payment payment, List<Order> orders, Customer customer) {
         this.createdDate = createdDate;

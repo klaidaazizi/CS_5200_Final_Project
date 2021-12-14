@@ -152,4 +152,4 @@ const CustomerFormEditor = () => {
     )
 }
 
-export default CustomerFormEditor
+export default CustomerFormEditor;

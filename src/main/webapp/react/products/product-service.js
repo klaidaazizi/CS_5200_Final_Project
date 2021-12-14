@@ -8,8 +8,12 @@ export const findProductById = (id) =>
     fetch(`${PRODUCTS_URL}/${id}`)
         .then(response => response.json())
 
-export const findProductsBySellerId = (id) =>
+export const findProductsBySeller = (id) =>
     fetch(`${PRODUCTS_URL}/sellerId/${id}`)
+        .then(response => response.json())
+
+export const findProductByOrderId = (id) =>
+    fetch(`${PRODUCTS_URL}/orderId/${id}`)
         .then(response => response.json())
 
 export const deleteProduct = (id) =>
@@ -39,5 +43,6 @@ export default {
     deleteProduct,
     createProduct,
     updateProduct,
-    findProductsBySellerId
+    findProductsBySeller,
+    findProductByOrderId
 }

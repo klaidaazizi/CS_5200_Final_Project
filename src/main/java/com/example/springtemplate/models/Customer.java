@@ -16,7 +16,7 @@ public class Customer extends User {
     @JsonIgnore
     public List<Follow> follows;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany (mappedBy = "customer")
     @JsonIgnore
     public List<Cart> carts;
 
