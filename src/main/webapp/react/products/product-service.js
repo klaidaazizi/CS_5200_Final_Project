@@ -21,8 +21,8 @@ export const deleteProduct = (id) =>
         method: "DELETE"
     })
 
-export const createProduct = (product) =>
-    fetch(PRODUCTS_URL, {
+export const createProduct = (product, id) =>
+    fetch(`${PRODUCTS_URL}/${id}`, {
         method: 'POST',
         body: JSON.stringify(product),
         headers: {'content-type': 'application/json'}

@@ -12,18 +12,19 @@ export const findOrdersByProduct = (id) =>
     fetch(`${ORDERS_URL}/productId/${id}`)
         .then(response => response.json())
 
+export const findOrdersByCart = (id) =>
+    fetch(`${ORDERS_URL}/cartId/${id}`)
+        .then(response => response.json())
+
 export const deleteOrder = (id) =>
     fetch(`${ORDERS_URL}/${id}`, {
         method: "DELETE"
     })
 
-export const addOrder = (order, id) =>
-    fetch(`${ORDERS_URL}/${id}`, {
-        method: 'POST',
-        body: JSON.stringify(order),
-        headers: {'content-type': 'application/json'}
-    })
-        .then(response => response.json())
+export const addOrder = (productId, cartId, quantity) =>
+    fetch(`${ORDERS_URL}/${productId}/${cartId}/${quantity}`, {
+        method: 'POST'
+    }).then(response => response.json())
 
 export const createOrder = (order) =>
     fetch(ORDERS_URL, {
@@ -48,5 +49,6 @@ export default {
     createOrder,
     updateOrder,
     findOrdersByProduct,
-    addOrder
+    addOrder,
+    findOrdersByCart
 }

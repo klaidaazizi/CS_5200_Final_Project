@@ -16,20 +16,17 @@ import FollowNewCustomer from "./react/follows/follow-new-customer.js";
 import FollowNewSeller from "./react/follows/follow-new-seller.js";
 import SellerFormEditorByProduct from "./react/sellers/seller-form-editor-by-product";
 import ProductListBySeller from "./react/products/product-list-by-seller";
+import ProductFormEditorByOrder from "./react/products/product-form-editor-by-order";
 import HomePage from "./home.js"
 import OrderList from "./react/orders/order-list";
 import OrderFormEditor from "./react/orders/order-form-editor";
 import OrderListByProduct from "./react/orders/order-list-by-product";
+import OrderListByCart from "./react/orders/order-list-by-cart";
+import OrderAdderForm from "./react/orders/add-order";
+import ProductAdder from "./react/products/add-product";
 
 const {HashRouter, Route} = window.ReactRouterDOM;
 
-function OrderAdderForm() {
-    return null;
-}
-
-function ProductFormEditorByOrder() {
-    return null;
-}
 
 const App = () => {
     return (
@@ -64,6 +61,9 @@ const App = () => {
                 </Route>
                 <Route path="/products/:id" exact={true}>
                     <ProductFormEditor/>
+                </Route>
+                <Route path="/products/new/:id" exact={true}>
+                    <ProductAdder/>
                 </Route>
                 <Route path={"/sellers"} exact={true}>
                     <SellerList/>
@@ -106,6 +106,9 @@ const App = () => {
                 </Route>
                 <Route path="/ordersByProduct/:id" exact={true}>
                     <OrderListByProduct/>
+                </Route>
+                <Route path="/ordersByCart/:id" exact={true}>
+                    <OrderListByCart/>
                 </Route>
             </HashRouter>
         </div>

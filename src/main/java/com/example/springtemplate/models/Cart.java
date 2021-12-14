@@ -17,6 +17,8 @@ public class Cart {
     @Column(name = "payment_type")
     @Enumerated(EnumType.STRING)
     public Payment payment;
+    @Column(name = "name")
+    public String name;
 
     @OneToMany(mappedBy = "cart")
     @JsonIgnore
@@ -73,4 +75,8 @@ public class Cart {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+
+    public String getName() { return this.name; }
+
+    public void setName(String name) { this.name = name; }
 }

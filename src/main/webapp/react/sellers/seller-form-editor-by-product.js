@@ -23,11 +23,15 @@ const SellerFormEditorByProduct = () => {
     return (
         <div>
             <h2>Seller Editor</h2>
-
+            <Link to={`/`}>
+                HOME
+            </Link>
+            <br/>
             <Link to={`/productsBySeller/${seller.id}`}>
-                            Link to Products
-                        </Link>
-                        <br/>
+                Link to Products
+            </Link>
+            <br/>
+            <br/>
             <label>ID</label>
             <input value={seller.id}/><br/>
             <label>Company Name</label>

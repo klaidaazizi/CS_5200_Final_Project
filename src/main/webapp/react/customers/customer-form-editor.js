@@ -37,6 +37,7 @@ const CustomerFormEditor = () => {
                 Link to Followed Sellers
             </Link>
             <br/>
+            <br/>
             <label>ID</label>
             <input value={customer.id}/><br/>
             <label>First Name</label>

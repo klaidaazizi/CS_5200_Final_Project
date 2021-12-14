@@ -1,37 +1,16 @@
-import productService, {findProductByOrderId} from "./product-service";
+import productService from "./product-service"
 const {useState, useEffect} = React;
 const {Link, useParams, useHistory} = window.ReactRouterDOM;
 
-const ProductFormEditorByOrder = () => {
+const AddProduct = () => {
     const {id} = useParams()
     const [product, setProduct] = useState({})
-    useEffect(() => {
-        findProductByOrderId(id)
-    }, []);
-    const createProduct = (product) =>
-        productService.createProduct(product)
-            .then(() => history.back())
-    const findProductByOrderId = (id) =>
-        productService.findProductByOrderId(id)
-            .then(product => setProduct(product))
-    const deleteProduct = (id) =>
-        productService.deleteProduct(id)
-            .then(() => history.back())
-    const updateProduct = (id, newProduct) =>
-        productService.updateProduct(id, newProduct)
+    const createProduct = (product, id) =>
+        productService.createProduct(product, id)
             .then(() => history.back())
     return (
         <div>
-            <h2>Product Editor</h2>
-            <Link to={`/`}>
-                HOME
-            </Link>
-            <br/>
-            <Link to={`/ordersByProduct/${product.id}`}>
-                Link to Orders
-            </Link>
-            <br/>
-            <br/>
+            <h2>Product Creator</h2>
             <label>ID</label>
             <input value={product.id}/><br/>
             <label>Name</label>
@@ -64,17 +43,17 @@ const ProductFormEditorByOrder = () => {
             <label>Weight</label>
             <input
                 onChange={(e) =>
-                    setProduct(product =>
-                        ({...product, weight: e.target.value}))}
+                setProduct(product =>
+                ({...product, weight: e.target.value}))}
                 value={product.weight}/>
             <br/>
             <label>Age Group</label>
-            <input
-                onChange={(e) =>
+                <input
+                  onChange={(e) =>
                     setProduct(product =>
-                        ({...product, ageGroup: e.target.value}))}
-                value={product.ageGroup}/>
-            <br/>
+                       ({...product, ageGroup: e.target.value}))}
+                       value={product.ageGroup}/>
+                        <br/>
             <br/>
             <label>Discount</label>
             <input
@@ -84,21 +63,13 @@ const ProductFormEditorByOrder = () => {
                 value={product.discount}/>
             <br/>
             <br/>
+               <br/>
             <button className="btn btn-warning"
-                    onClick={() => {
-                        history.back()}}>
+                onClick={() => {
+                    history.back()}}>
                 Cancel
             </button>
-            <button className="btn btn-danger"
-                    onClick={() => deleteProduct(product.id)}>
-                Delete
-            </button>
-            <button className="btn btn-success"
-                    onClick={() => updateProduct(product.id, product)}>
-                Save
-            </button>
-
-            <button className="btn btn-success" onClick={() => createProduct(product)}>
+            <button className="btn btn-success" onClick={() => createProduct(product, id)}>
                 Create
             </button>
 
@@ -106,4 +77,4 @@ const ProductFormEditorByOrder = () => {
     )
 }
 
-export default ProductFormEditorByOrder
+export default AddProduct

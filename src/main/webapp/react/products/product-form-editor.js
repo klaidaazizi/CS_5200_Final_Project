@@ -25,11 +25,15 @@ const ProductFormEditor = () => {
     return (
         <div>
             <h2>Product Editor</h2>
-
+            <Link to={`/`}>
+                HOME
+            </Link>
+            <br/>
             <Link to={`/ordersByProduct/${product.id}`}>
                 Link to Orders
             </Link>
-
+            <br/>
+            <br/>
             <label>ID</label>
             <input value={product.id}/><br/>
             <label>Name</label>

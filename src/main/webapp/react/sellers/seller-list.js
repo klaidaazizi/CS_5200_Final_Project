@@ -23,10 +23,10 @@ const SellerList = () => {
                         <li className="list-group-item"
                             key={seller.id}>
                             <Link to={`/sellers/${seller.id}`}>
-                                {seller.companyName},
-                                {seller.yearFounded},
-                                {seller.firstName},
-                                {seller.lastName},
+                                {"Company Name: " + seller.companyName}
+                                {" | Owner: " + seller.firstName}
+                                {" " + seller.lastName}
+                                {" | Year Founded: " + seller.yearFounded}
                             </Link>
                         </li>)
                 }

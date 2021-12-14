@@ -1,12 +1,15 @@
 package com.example.springtemplate.daos;
 
+import com.example.springtemplate.models.Cart;
 import com.example.springtemplate.models.Order;
 import com.example.springtemplate.models.Product;
+import com.example.springtemplate.repositories.CartRestRepository;
 import com.example.springtemplate.repositories.OrderRestRepository;
 import com.example.springtemplate.repositories.ProductRestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -16,6 +19,8 @@ public class OrderRestDao {
     OrderRestRepository orderRepository;
     @Autowired
     ProductRestRepository productRepository;
+    @Autowired
+    CartRestRepository cartRepository;
 
     @GetMapping("/api/orders")
     public List<Order> findAllOrders(){
@@ -26,6 +31,12 @@ public class OrderRestDao {
     public List<Order> findOrdersByProduct(
             @PathVariable("id") Integer id){
         return orderRepository.findOrdersByProduct(id);
+    }
+
+    @GetMapping("/api/orders/cartId/{id}")
+    public List<Order> findOrdersByCart(
+            @PathVariable("id") Integer id){
+        return orderRepository.findOrdersByCart(id);
     }
 
     @GetMapping("/api/orders/{id}")
@@ -46,16 +57,22 @@ public class OrderRestDao {
         newOrder.setCreatedDate(order.getCreatedDate());
         newOrder.setCart(order.getCart());
         newOrder.setCreatedDate(order.getCreatedDate());
-        newOrder.setShippedDate(order.getShippedDate());
         return orderRepository.save(newOrder);
     }
 
-    @PostMapping("/api/orders/{id}")
-    public Order addOrder(@RequestBody Order order,
-                        @PathVariable("id") Integer id) {
-        Product product = productRepository.findProductById(id);
-        order.setProduct(product);
-        return orderRepository.save(order);
+    @PostMapping("/api/orders/{productId}/{cartId}/{quantity}")
+    public Order addOrder(@PathVariable("productId") Integer productId,
+                          @PathVariable("cartId") Integer cartId,
+                          @PathVariable("quantity") Integer quantity) {
+        Product product = productRepository.findProductById(productId);
+        Cart cart = cartRepository.findCartById(cartId);
+        Order newOrder = new Order();
+        Date date = new Date();
+        newOrder.setCart(cart);
+        newOrder.setProduct(product);
+        newOrder.setCreatedDate(date);
+        newOrder.setQuantity(quantity);
+        return orderRepository.save(newOrder);
     }
 
     @PutMapping("/api/orders/{id}")
@@ -63,11 +80,8 @@ public class OrderRestDao {
             @PathVariable("id") Integer id,
             @RequestBody Order orderUpdates) {
         Order order = orderRepository.findOrderById(id);
-        order.setOrderId(orderUpdates.getOrderId());
         order.setCreatedDate(orderUpdates.getCreatedDate());
-        order.setCart(orderUpdates.getCart());
-        order.setCreatedDate(orderUpdates.getCreatedDate());
-        order.setShippedDate(orderUpdates.getShippedDate());
+        order.setQuantity(orderUpdates.getQuantity());
         return orderRepository.save(order);
     }
 

@@ -31,6 +31,7 @@ const CustomerFormEditorByCart = () => {
                 Link to Carts
             </Link>
             <br/>
+            <br/>
             <label>ID</label>
             <input value={customer.id}/><br/>
             <label>First Name</label>

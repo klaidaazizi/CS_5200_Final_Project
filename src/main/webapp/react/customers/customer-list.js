@@ -23,10 +23,9 @@ const CustomerList = () => {
                         <li className="list-group-item"
                             key={customer.id}>
                             <Link to={`/customers/${customer.id}`}>
-                                {customer.firstName},
-                                {customer.lastName},
-                                {customer.age},
-                                {customer.profilePicture}
+                                {"Name: " + customer.firstName}
+                                {" " + customer.lastName}
+                                {" | Age: " + customer.age}
                             </Link>
                         </li>)
                 }

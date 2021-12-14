@@ -17,7 +17,7 @@ const FollowNewSeller = () => {
         }).then(() => history.back())
     return(
         <div>
-            <h2>Customer List</h2>
+            <h2>Seller List</h2>
             <ul className="list-group">
                 {
                     sellers.map(seller =>

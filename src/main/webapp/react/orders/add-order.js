@@ -1,26 +1,50 @@
 import orderService from "./order-service"
-const {useState, useEffect} = React;
+import productService from "./product-service"
+const { useState, useEffect } = React;
 const {Link, useParams, useHistory} = window.ReactRouterDOM;
 
 const orderAdderForm = () => {
     const {id} = useParams()
-    const [order, setOrder] = useState({})
-    useEffect(() => {}, []);
-    const addOrder = (order, id) =>
-        orderService.addOrder(order, id)
+    const [products, setProducts] = useState([])
+    const [quantity, setQuantity] = useState([])
+    useEffect(() => {
+        findAllProducts()
+    }, [])
+    const findAllProducts = () =>
+        productService.findAllProducts()
+            .then(products => setProducts(products))
+    const addOrder = (productId, id, quantity) =>
+        orderService.addOrder(productId, id, quantity)
             .then(() => history.back())
     return (
         <div>
-            <h2>Order Editor</h2>
-            <label>ID</label>
-            <input value={order.id}/><br/>
-            <label>Payment Type</label>
+            <h2>Product List</h2>
+            <br/>
+            <label>Quantity</label>
             <input
                 onChange={(e) =>
-                    setOrder(order =>
-                        ({...order, payment: e.target.value}))}
-                value={order.payment}/>
+                    setQuantity(quantity =>
+                        ({...quantity, quantity: e.target.value}))}/>
             <br/>
+            <br/>
+            <ul className="list-group">
+                {
+                    products.map(product =>
+                        <li className="list-group-item"
+                            key={product.id}>
+                            <button onClick={() => addOrder(product.id, id, quantity.quantity)}>
+                                {product.name},
+                                {product.category},
+                                {product.price},
+                                {product.inventory},
+                                {product.weight},
+                                {product.ageGroup},
+                                {product.discount}
+                            </button>
+                            <br/>
+                        </li>)
+                }
+            </ul>
             <Link to={`/`}>
                 HOME
             </Link>
@@ -30,11 +54,6 @@ const orderAdderForm = () => {
                         history.back()}}>
                 Cancel
             </button>
-
-            <button className="btn btn-success" onClick={() => addOrder(order, id)}>
-                Add
-            </button>
-
         </div>
     )
 }

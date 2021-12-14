@@ -20,14 +20,17 @@ public class ProductRestDao {
     @Autowired
     OrderRestRepository orderRepository;
 
-    @PostMapping("/api/products")
-    public Product createProduct(@RequestBody Product product) {
+    @PostMapping("/api/products/{id}")
+    public Product createProduct(@RequestBody Product product,
+                                 @PathVariable("id") Integer sellerId) {
         Product newProduct = new Product();
+        Seller seller = sellerRepository.findSellerById(sellerId);
         newProduct.setName(product.getName());
         newProduct.setAgeGroup(product.getAgeGroup());
         newProduct.setCategory(product.getCategory());
         newProduct.setPrice(product.getPrice());
         newProduct.setInventory(product.getInventory());
+        newProduct.setSeller(seller);
         return productRestRepository.save(newProduct);
     }
 

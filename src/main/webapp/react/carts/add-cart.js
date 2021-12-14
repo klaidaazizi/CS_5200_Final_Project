@@ -14,6 +14,13 @@ const cartAdderForm = () => {
             <h2>Cart Editor</h2>
             <label>ID</label>
             <input value={cart.id}/><br/>
+            <label>Cart Name</label>
+            <input
+                onChange={(e) =>
+                    setCart(cart =>
+                        ({...cart, name: e.target.value}))}
+                value={cart.name}/>
+            <br/>
             <label>Payment Type</label>
             <input
                 onChange={(e) =>

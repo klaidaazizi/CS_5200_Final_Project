@@ -28,22 +28,23 @@ const orderFormEditor = () => {
                 HOME
             </Link>
             <br/>
+            <br/>
             <h2>Order Editor</h2>
             <label>ID</label>
             <input value={order.id}/><br/>
-            <label>Created Date</label>
+            <label>Order Date</label>
             <input
                 onChange={(e) =>
                     setOrder(order =>
                         ({...order, createdDate: e.target.value}))}
                 value={order.createdDate}/>
             <br/>
-            <label>Shipped Date</label>
+            <label>Quantity</label>
             <input
                 onChange={(e) =>
                     setOrder(order =>
-                        ({...order, shippedDate: e.target.value}))}
-                value={order.shippedDate}/>
+                        ({...order, quantity: e.target.value}))}
+                value={order.quantity}/>
             <br/>
             <br/>
             <button className="btn btn-warning"
