@@ -46,7 +46,7 @@ const orderAdderForm = () => {
                 }
             </ul>
             <Link to={`/`}>
-                HOME
+                <button type="button" className="btn btn-outline-danger">HOME</button>
             </Link>
             <br/>
             <button className="btn btn-warning"

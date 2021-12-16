@@ -2,6 +2,7 @@ package com.example.springtemplate.daos;
 
 import com.example.springtemplate.models.Product;
 import com.example.springtemplate.models.Seller;
+import com.example.springtemplate.repositories.DiscountRestRepository;
 import com.example.springtemplate.repositories.OrderRestRepository;
 import com.example.springtemplate.repositories.ProductRestRepository;
 import com.example.springtemplate.repositories.SellerRestRepository;
@@ -19,6 +20,8 @@ public class ProductRestDao {
     SellerRestRepository sellerRepository;
     @Autowired
     OrderRestRepository orderRepository;
+    @Autowired
+    DiscountRestRepository discountRepository;
 
     @PostMapping("/api/products/{id}")
     public Product createProduct(@RequestBody Product product,
@@ -51,7 +54,6 @@ public class ProductRestDao {
         return productRestRepository.findProductsBySeller(id);
     }
 
-
     @PutMapping("/api/products/{id}")
     public Product updateProduct(
             @PathVariable("id") Integer id,
@@ -76,6 +78,13 @@ public class ProductRestDao {
     public Product findProductByOrderId(
             @PathVariable("id") Integer id){
         Integer productId = orderRepository.findOrderById(id).getProduct().getId();
+        return productRestRepository.findProductById(productId);
+    }
+
+    @GetMapping("/api/products/discountId/{id}")
+    public Product findProductByDiscountId(
+            @PathVariable("id") Integer id){
+        Integer productId = discountRepository.findDiscountById(id).getProduct().getId();
         return productRestRepository.findProductById(productId);
     }
 

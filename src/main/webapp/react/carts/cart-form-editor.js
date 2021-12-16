@@ -25,7 +25,7 @@ const cartFormEditor = () => {
     return (
         <div>
             <Link to={`/`}>
-                HOME
+                <button type="button" className="btn btn-outline-danger">HOME</button>
             </Link>
             <br/>
             <Link to={`/ordersByCart/${id}`}>
@@ -65,7 +65,7 @@ const cartFormEditor = () => {
                 Save
             </button>
 
-            <button className="btn btn-success" onClick={() => createCart(cart)}>
+            <button className="btn btn-primary" onClick={() => createCart(cart)}>
                 Create
             </button>
 

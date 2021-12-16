@@ -16,6 +16,10 @@ export const findProductByOrderId = (id) =>
     fetch(`${PRODUCTS_URL}/orderId/${id}`)
         .then(response => response.json())
 
+export const findProductByDiscountId = (id) =>
+    fetch(`${PRODUCTS_URL}/discountId/${id}`)
+        .then(response => response.json())
+
 export const deleteProduct = (id) =>
     fetch(`${PRODUCTS_URL}/${id}`, {
         method: "DELETE"
@@ -44,5 +48,6 @@ export default {
     createProduct,
     updateProduct,
     findProductsBySeller,
-    findProductByOrderId
+    findProductByOrderId,
+    findProductByDiscountId
 }

@@ -21,12 +21,16 @@ import HomePage from "./home.js"
 import OrderList from "./react/orders/order-list";
 import OrderFormEditor from "./react/orders/order-form-editor";
 import OrderListByProduct from "./react/orders/order-list-by-product";
+import DiscountList from "./react/discounts/discount-list";
+import DiscountFormEditor from "./react/discounts/discount-form-editor";
+import ProductFormEditorByDiscount from "./react/products/product-form-editor-by-discount";
+import DiscountByProduct from "./react/discounts/discount-by-product";
+import DiscountAdderForm from "./react/discounts/add-discount";
 import OrderListByCart from "./react/orders/order-list-by-cart";
 import OrderAdderForm from "./react/orders/add-order";
 import ProductAdder from "./react/products/add-product";
 
 const {HashRouter, Route} = window.ReactRouterDOM;
-
 
 const App = () => {
     return (
@@ -61,9 +65,6 @@ const App = () => {
                 </Route>
                 <Route path="/products/:id" exact={true}>
                     <ProductFormEditor/>
-                </Route>
-                <Route path="/products/new/:id" exact={true}>
-                    <ProductAdder/>
                 </Route>
                 <Route path={"/sellers"} exact={true}>
                     <SellerList/>
@@ -109,6 +110,21 @@ const App = () => {
                 </Route>
                 <Route path="/ordersByCart/:id" exact={true}>
                     <OrderListByCart/>
+                </Route>
+                <Route path={"/discounts"} exact={true}>
+                    <DiscountList/>
+                </Route>
+                <Route path="/discounts/:id" exact={true}>
+                    <DiscountFormEditor/>
+                </Route>
+                <Route path="/discounts/addDiscount/:id" exact={true}>
+                    <DiscountAdderForm/>
+                </Route>
+                <Route path="/discountByProduct/:id" exact={true}>
+                    <DiscountByProduct/>
+                </Route>
+                <Route path="/productForDiscount/:id" exact={true}>
+                    <ProductFormEditorByDiscount/>
                 </Route>
             </HashRouter>
         </div>

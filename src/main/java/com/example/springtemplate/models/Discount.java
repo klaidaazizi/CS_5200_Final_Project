@@ -11,7 +11,7 @@ public class Discount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "discount_id")
-    private Integer discountId;
+    private Integer id;
     private String title;
     private String description;
     @Column(name="start_date")
@@ -24,8 +24,7 @@ public class Discount {
     @JoinColumn(name = "product_id")
     public Product product;
 
-    public Discount(Integer discountId, String title, String description, String startDate, String endDate, Integer percent, Product product) {
-        this.discountId = discountId;
+    public Discount(String title, String description, String startDate, String endDate, Integer percent, Product product) {
         this.title = title;
         this.description = description;
         this.startDate = startDate;
@@ -37,12 +36,12 @@ public class Discount {
     public Discount() {
     }
 
-    public Integer getDiscountId() {
-        return discountId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setDiscountId(Integer discountId) {
-        this.discountId = discountId;
+    public void setId(Integer discountId) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -76,7 +75,6 @@ public class Discount {
     public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
-
 
     public void setPercent(Integer percent) {
         this.percent = percent;

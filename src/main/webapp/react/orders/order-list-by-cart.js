@@ -23,21 +23,19 @@ const OrderListByProduct = () => {
                     orders.map(order =>
                         <li className="list-group-item"
                             key={order.id}>
-                            <Link to={`/orders/${order.id}`}>
                                 {"Product Name: " + order.product.name}
                                 {" | Quantity: " + order.quantity}
-                                {" | Seller: " + order.product.seller.companyName}
-                            </Link>
-                            <br/>
-                            <Link to={`/products/${order.product.id}`}>
-                                Link to Product
-                            </Link>
+                                {" | Seller: " + order.product.seller.companyName + ' '}
+                                <Link to={`/orders/${order.id}`}><button type="button" className="btn btn-outline-info">Edit</button>
+                                </Link>
+                                <Link to={`/products/${order.product.id}`}><button type="button" className="btn btn-outline-success">Go to Product</button>
+                                </Link>
                         </li>)
                 }
             </ul>
             <br/>
             <Link to={`/`}>
-                HOME
+                <button type="button" className="btn btn-outline-danger">HOME</button>
             </Link>
         </div>
     )

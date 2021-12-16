@@ -25,7 +25,7 @@ const orderFormEditor = () => {
     return (
         <div>
             <Link to={`/`}>
-                HOME
+                <button type="button" className="btn btn-outline-danger">HOME</button>
             </Link>
             <br/>
             <br/>
@@ -40,6 +40,12 @@ const orderFormEditor = () => {
                 value={order.createdDate}/>
             <br/>
             <label>Quantity</label>
+            <input
+                onChange={(e) =>
+                    setOrder(order =>
+                        ({...order, shippedDate: e.target.value}))}
+                value={order.shippedDate}/>
+            <br/>
             <input
                 onChange={(e) =>
                     setOrder(order =>
@@ -61,7 +67,7 @@ const orderFormEditor = () => {
                 Save
             </button>
 
-            <button className="btn btn-success" onClick={() => createOrder(order)}>
+            <button className="btn btn-primary" onClick={() => createOrder(order)}>
                 Create
             </button>
 

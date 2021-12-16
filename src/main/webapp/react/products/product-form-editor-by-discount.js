@@ -1,18 +1,18 @@
-import productService, {findProductByOrderId} from "./product-service";
+import productService, {findProductByDiscountId} from "./product-service";
 const {useState, useEffect} = React;
 const {Link, useParams, useHistory} = window.ReactRouterDOM;
 
-const ProductFormEditorByOrder = () => {
+const ProductFormEditorByDiscount = () => {
     const {id} = useParams()
     const [product, setProduct] = useState({})
     useEffect(() => {
-        findProductByOrderId(id)
+        findProductByDiscountId(id)
     }, []);
     const createProduct = (product) =>
         productService.createProduct(product)
             .then(() => history.back())
-    const findProductByOrderId = (id) =>
-        productService.findProductByOrderId(id)
+    const findProductByDiscountId = (id) =>
+        productService.findProductByDiscountId(id)
             .then(product => setProduct(product))
     const deleteProduct = (id) =>
         productService.deleteProduct(id)
@@ -30,7 +30,6 @@ const ProductFormEditorByOrder = () => {
             <Link to={`/ordersByProduct/${product.id}`}>
                 Link to Orders
             </Link>
-            <br/>
             <br/>
             <label>ID</label>
             <input value={product.id}/><br/>
@@ -102,4 +101,4 @@ const ProductFormEditorByOrder = () => {
     )
 }
 
-export default ProductFormEditorByOrder;
+export default ProductFormEditorByDiscount;

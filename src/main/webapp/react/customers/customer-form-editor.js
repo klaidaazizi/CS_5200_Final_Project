@@ -26,7 +26,7 @@ const CustomerFormEditor = () => {
         <div>
             <h2>Customer Editor</h2>
             <Link to={`/`}>
-                HOME
+                <button type="button" className="btn btn-outline-danger">HOME</button>
             </Link>
             <br/>
             <Link to={`/cartsByCustomer/${customer.id}`}>
@@ -145,7 +145,7 @@ const CustomerFormEditor = () => {
                 Save
             </button>
 
-            <button className="btn btn-success" onClick={() => createCustomer(customer)}>
+            <button className="btn btn-primary" onClick={() => createCustomer(customer)}>
                 Create
             </button>
 

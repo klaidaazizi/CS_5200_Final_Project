@@ -22,16 +22,16 @@ const CustomerList = () => {
                     customer.map(customer =>
                         <li className="list-group-item"
                             key={customer.id}>
-                            <Link to={`/customers/${customer.id}`}>
                                 {"Name: " + customer.firstName}
                                 {" " + customer.lastName}
-                                {" | Age: " + customer.age}
-                            </Link>
+                                {" | Age: " + customer.age + ' '}
+                                <Link to={`/customers/${customer.id}`}><button type="button" className="btn btn-outline-info">Edit</button></Link>
+
                         </li>)
                 }
             </ul>
             <Link to={`/`}>
-                HOME
+                <button type="button" className="btn btn-outline-danger">HOME</button>
             </Link>
         </div>
     )

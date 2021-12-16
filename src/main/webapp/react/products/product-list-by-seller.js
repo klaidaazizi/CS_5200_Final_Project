@@ -24,22 +24,22 @@ const ProductListBySeller = () => {
                     products.map(product =>
                         <li className="list-group-item"
                             key={product.id}>
+                            {"Product Name: " + product.name}
+                            {" | Category: " + product.category}
+                            {" | Price: $" + product.price}
+                            {" | Inventory: " + product.inventory + ' '}
                             <Link to={`/products/${product.id}`}>
-                                {"Product Name: " + product.name}
-                                {" | Category: " + product.category}
-                                {" | Price: $" + product.price}
-                                {" | Inventory: " + product.inventory}
+                                <button type="button" className="btn btn-outline-info">Edit</button>
                             </Link>
-                            <br/>
-                            <Link to={`/sellers/${product.seller.id}`}>
-                                Link to Seller
+
+                            <Link to={`/sellers/${product.seller.id}`}><button type="button" className="btn btn-outline-success">Go to Seller</button>
                             </Link>
 
                         </li>)
                 }
             </ul>
             <Link to={`/`}>
-                HOME
+                <button type="button" className="btn btn-outline-danger">HOME</button>
             </Link>
         </div>
     )

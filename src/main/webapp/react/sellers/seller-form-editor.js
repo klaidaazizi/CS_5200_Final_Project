@@ -26,7 +26,7 @@ const SellerFormEditor = () => {
         <div>
             <h2>Seller Editor</h2>
             <Link to={`/`}>
-                HOME
+                <button type="button" className="btn btn-outline-danger">HOME</button>
             </Link>
             <br/>
             <Link to={`/follows/bySeller/${seller.id}`}>
@@ -145,7 +145,7 @@ const SellerFormEditor = () => {
                 Save
             </button>
 
-            <button className="btn btn-success" onClick={() => createSeller(seller)}>
+            <button className="btn btn-primary" onClick={() => createSeller(seller)}>
                 Create
             </button>
 

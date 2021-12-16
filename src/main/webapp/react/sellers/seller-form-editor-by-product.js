@@ -139,13 +139,13 @@ const SellerFormEditorByProduct = () => {
                 Save
             </button>
 
-            <button className="btn btn-success" onClick={() => createSeller(seller)}>
+            <button className="btn btn-primary" onClick={() => createSeller(seller)}>
                 Create
             </button>
 
 
             <Link to={`/`}>
-                HOME
+                <button type="button" className="btn btn-outline-danger">HOME</button>
             </Link>
 
         </div>

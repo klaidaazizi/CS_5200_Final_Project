@@ -35,11 +35,11 @@ public class Order {
     public Order() {
     }
 
-    public Integer getOrderId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setOrderId(Integer id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -74,4 +74,5 @@ public class Order {
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
+
 }

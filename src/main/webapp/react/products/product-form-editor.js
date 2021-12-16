@@ -26,17 +26,17 @@ const ProductFormEditor = () => {
         <div>
             <h2>Product Editor</h2>
             <Link to={`/`}>
-                HOME
+                <button type="button" className="btn btn-outline-danger">HOME</button>
             </Link>
             <br/>
             <Link to={`/ordersByProduct/${product.id}`}>
-                Link to Orders
+                Link to Orders by product
             </Link>
             <br/>
             <br/>
             <label>ID</label>
             <input value={product.id}/><br/>
-            <label>Name</label>
+            <label>Name </label>
             <input onChange={(e) =>
                 setProduct(product =>
                     ({...product, name: e.target.value}))}
@@ -49,28 +49,28 @@ const ProductFormEditor = () => {
                         ({...product, category: e.target.value}))}
                 value={product.category}/>
             <br/>
-            <label>Price</label>
+            <label>Price </label>
             <input
                 onChange={(e) =>
                     setProduct(product =>
                         ({...product, price: e.target.value}))}
                 value={product.price}/>
             <br/>
-            <label>Inventory</label>
+            <label>Inventory </label>
             <input
                 onChange={(e) =>
                     setProduct(product =>
                         ({...product, inventory: e.target.value}))}
                 value={product.inventory}/>
             <br/>
-            <label>Weight</label>
+            <label>Weight </label>
             <input
                 onChange={(e) =>
                 setProduct(product =>
                 ({...product, weight: e.target.value}))}
                 value={product.weight}/>
             <br/>
-            <label>Age Group</label>
+            <label>Age Group </label>
                 <input
                   onChange={(e) =>
                     setProduct(product =>
@@ -78,15 +78,11 @@ const ProductFormEditor = () => {
                        value={product.ageGroup}/>
                         <br/>
             <br/>
-            <label>Discount</label>
-            <input
-                onChange={(e) =>
-                    setProduct(product =>
-                        ({...product, discount: e.target.value}))}
-                value={product.discount}/>
-            <br/>
-            <br/>
+            <Link to={`/discountByProduct/${product.id}`}>
+                Link to Product Discount
+            </Link>
                <br/>
+            <br/>
             <button className="btn btn-warning"
                 onClick={() => {
                     history.back()}}>
@@ -101,9 +97,10 @@ const ProductFormEditor = () => {
                 Save
             </button>
 
-            <button className="btn btn-success" onClick={() => createProduct(product)}>
+            <button className="btn btn-primary" onClick={() => createProduct(product)}>
                 Create
             </button>
+
 
         </div>
     )
