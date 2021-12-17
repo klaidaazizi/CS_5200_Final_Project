@@ -93,6 +93,9 @@ const App = () => {
                 <Route path="/productsBySeller/:id" exact={true}>
                     <ProductListBySeller/>
                 </Route>
+                <Route path="/products/new/:id" exact={true}>
+                    <ProductAdder/>
+                </Route>
                 <Route path={"/orders"} exact={true}>
                     <OrderList/>
                 </Route>

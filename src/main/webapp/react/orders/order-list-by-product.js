@@ -25,8 +25,8 @@ const OrderListByProduct = () => {
                             key={order.id}>
                                 {"Cart Name: " + order.cart.name}
                                 {" | Payment Type: " + order.cart.payment + ' '}
-                                {/*{" | Customer Name: " + order.cart.customer.firstName}*/}
-                                {/*{" " + order.cart.customer.lastName}*/}
+                                {" | Customer Name: " + order.cart.customer.firstName}
+                                {" " + order.cart.customer.lastName}
                                 <Link to={`/orders/${order.id}`}><button type="button" className="btn btn-outline-info">Edit</button>
                                 </Link>
                                 <Link to={`/products/${order.product.id}`}><button type="button" className="btn btn-outline-success">Go to Product</button>
