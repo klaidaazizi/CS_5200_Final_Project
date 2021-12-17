@@ -14,8 +14,8 @@ const OrderListByProduct = () => {
             .then(orders => setOrders(orders))
     return(
         <div>
-            <h2>Order List By Product</h2>
-            <button className="btn btn-primary" onClick={() => history.push("/orders/new" + id)}>
+            <h2>Order List for Product - Carts</h2>
+            <button className="btn btn-primary" onClick={() => history.push("/orders/addOrder/" + id)}>
                 Add Order
             </button>
             <ul className="list-group">
@@ -25,7 +25,8 @@ const OrderListByProduct = () => {
                             key={order.id}>
                                 {"Cart Name: " + order.cart.name}
                                 {" | Payment Type: " + order.cart.payment + ' '}
-                                {" | Customer Name: " + order.cart.customer.firstName}
+                            {/*{" | Created Date: " + order.createdDate + ' '}*/}
+                            {/*{" | Customer Name: " + order.cart.customer.firstName}*/}
                                 {" " + order.cart.customer.lastName}
                                 <Link to={`/orders/${order.id}`}><button type="button" className="btn btn-outline-info">Edit</button>
                                 </Link>

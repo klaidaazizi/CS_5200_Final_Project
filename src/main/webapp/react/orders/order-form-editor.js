@@ -24,12 +24,14 @@ const orderFormEditor = () => {
             .then(() => history.back())
     return (
         <div>
-            <Link to={`/`}>
+            <br/><Link to={`/`}>
                 <button type="button" className="btn btn-outline-danger">HOME</button>
             </Link>
+
             <br/>
-            <br/>
-            <h2>Order Editor</h2>
+            <h2>Order for Product </h2>
+
+        <br/>
             <label>ID</label>
             <input value={order.id}/><br/>
             <label>Order Date</label>
@@ -39,19 +41,16 @@ const orderFormEditor = () => {
                         ({...order, createdDate: e.target.value}))}
                 value={order.createdDate}/>
             <br/>
-            <label>Quantity</label>
-            <input
-                onChange={(e) =>
-                    setOrder(order =>
-                        ({...order, shippedDate: e.target.value}))}
-                value={order.shippedDate}/>
-            <br/>
+            <label>Quantity </label>
             <input
                 onChange={(e) =>
                     setOrder(order =>
                         ({...order, quantity: e.target.value}))}
                 value={order.quantity}/>
             <br/>
+
+
+
             <br/>
             <button className="btn btn-warning"
                 onClick={() => {

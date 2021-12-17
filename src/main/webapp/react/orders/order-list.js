@@ -23,7 +23,6 @@ const OrderList = () => {
                         <li className="list-group-item"
                             key={order.id}>
                                 {"Created Date: " + order.createdDate}
-                                {" | Shipped Date: " + order.shippedDate + ' '}
                             {" | Quantity: " + order.quantity + ' '}
                                 {/*{" | Customer Name: " + order.cart.customer.firstName}*/}
                                 {/*{" " + order.cart.customer.lastName}*/}
