@@ -30,9 +30,9 @@ CREATE TABLE `follows` (
   PRIMARY KEY (`follow_id`),
   KEY `FK8wjsefmwtlm62aoch4w9n1has` (`customer_id`),
   KEY `FKay06ugvhgjhj7kq38fjt0bfka` (`seller_id`),
-  CONSTRAINT `FK8wjsefmwtlm62aoch4w9n1has` FOREIGN KEY (`customer_id`) REFERENCES `users` (`id`),
-  CONSTRAINT `FKay06ugvhgjhj7kq38fjt0bfka` FOREIGN KEY (`seller_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `FK8wjsefmwtlm62aoch4w9n1has` FOREIGN KEY (`customer_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FKay06ugvhgjhj7kq38fjt0bfka` FOREIGN KEY (`seller_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `follows` (
 
 LOCK TABLES `follows` WRITE;
 /*!40000 ALTER TABLE `follows` DISABLE KEYS */;
-INSERT INTO `follows` VALUES (2,'2019-10-15',3,5),(3,'2021-12-13',4,5),(36,'2021-12-13',11,1),(37,'2021-12-13',4,1),(38,'2021-12-13',3,1),(39,'2021-12-13',4,6),(40,'2021-12-13',4,1),(41,'2021-12-13',11,5),(42,'2021-12-13',3,6),(43,'2021-12-13',4,12),(44,'2021-12-14',3,12),(46,'2021-12-14',3,13);
+INSERT INTO `follows` VALUES (2,'2019-10-15',3,5),(36,'2021-12-13',11,1),(38,'2021-12-13',3,1),(39,'2021-12-13',4,6),(41,'2021-12-13',11,5),(42,'2021-12-13',3,6),(44,'2021-12-14',3,12),(46,'2021-12-14',3,13);
 /*!40000 ALTER TABLE `follows` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-14 14:48:26
+-- Dump completed on 2021-12-17  9:18:09

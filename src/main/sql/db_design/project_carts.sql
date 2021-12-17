@@ -31,7 +31,7 @@ CREATE TABLE `carts` (
   PRIMARY KEY (`cart_id`),
   KEY `cart_to_customer` (`customer_id`),
   CONSTRAINT `cart_to_customer` FOREIGN KEY (`customer_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `carts` (
 
 LOCK TABLES `carts` WRITE;
 /*!40000 ALTER TABLE `carts` DISABLE KEYS */;
-INSERT INTO `carts` VALUES (6,'DEBIT',NULL,'2010-03-21','Holiday Shopping'),(12,'DEBIT',4,'Mon Dec 13 13:08:07 EST 2021','Work Order'),(13,'DEBIT',3,'Tue Dec 14 14:11:37 EST 2021','Pet Supplies');
+INSERT INTO `carts` VALUES (6,'DEBIT',NULL,'2010-03-21','Holiday Shopping'),(12,'DEBIT',4,'Mon Dec 13 13:08:07 EST 2021','Work Order'),(13,'DEBIT',3,'Tue Dec 14 14:11:37 EST 2021','Pet Supplies'),(14,'PAYPAL',11,'Thu Dec 16 20:12:38 EST 2021','Shopping'),(15,'CREDIT',4,'Fri Dec 17 09:06:50 EST 2021','Pet Supplies');
 /*!40000 ALTER TABLE `carts` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-14 14:48:26
+-- Dump completed on 2021-12-17  9:18:09

@@ -32,7 +32,7 @@ CREATE TABLE `discounts` (
   `product_id` int DEFAULT NULL,
   PRIMARY KEY (`discount_id`),
   KEY `discount_to_product_idx` (`product_id`),
-  CONSTRAINT `discount_to_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`)
+  CONSTRAINT `discount_to_product` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -42,7 +42,7 @@ CREATE TABLE `discounts` (
 
 LOCK TABLES `discounts` WRITE;
 /*!40000 ALTER TABLE `discounts` DISABLE KEYS */;
-INSERT INTO `discounts` VALUES (1,'Black Friday Sale','60% off everything!','2021-11-19 00:00:00','2021-11-28 00:00:00',60,NULL),(2,'Christmas Sale','65% off home decor','2021-12-18 00:00:00','2021-12-28 00:00:00',65,NULL);
+INSERT INTO `discounts` VALUES (1,'Black Friday Sale','60% off everything!','2021-11-19 00:00:00','2021-11-28 00:00:00',60,3),(2,'Christmas Sale','65% off home decor','2021-12-18 00:00:00','2021-12-28 00:00:00',65,NULL);
 /*!40000 ALTER TABLE `discounts` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-14 14:48:26
+-- Dump completed on 2021-12-17  9:18:10

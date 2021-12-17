@@ -35,8 +35,8 @@ CREATE TABLE `products` (
   KEY `category_idx` (`category`),
   KEY `product_to_seller_idx` (`seller_id`),
   CONSTRAINT `category` FOREIGN KEY (`category`) REFERENCES `categories` (`category`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `product_to_seller` FOREIGN KEY (`seller_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `product_to_seller` FOREIGN KEY (`seller_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (3,'Dog Treats','Pet',17.99,5,5,NULL,5),(4,'Eggs','Food',17.99,9,NULL,NULL,5),(12,'Chicken','Food',10.99,10,10.99,10,5),(15,'Semi Firm Mattress','Home',100,10,NULL,NULL,13),(16,'Memory Foam Mattress','Home',700,20,NULL,NULL,13);
+INSERT INTO `products` VALUES (3,'Dog Treats','Pet',17.99,2,5,NULL,5),(4,'Eggs','Food',17.99,8,NULL,NULL,5),(12,'Chicken','Food',10.99,10,10.99,10,5),(15,'Semi Firm Mattress','Home',100,10,NULL,NULL,13),(16,'Memory Foam Mattress','Home',700,14,NULL,NULL,13),(17,'Puppy Tooth Paste','Pet',10,7,NULL,NULL,5);
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +58,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-14 14:48:27
+-- Dump completed on 2021-12-17  9:18:10

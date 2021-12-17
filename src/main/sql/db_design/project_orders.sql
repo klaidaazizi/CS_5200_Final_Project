@@ -33,7 +33,7 @@ CREATE TABLE `orders` (
   KEY `order_to_products_idx` (`product_id`),
   CONSTRAINT `order_to_cart` FOREIGN KEY (`cart_id`) REFERENCES `carts` (`cart_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `order_to_products` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (11,'2021-12-14',15,12,3),(12,'2021-12-14',15,13,3),(13,'2021-12-14',5,12,12),(14,'2021-12-14',5,6,3),(15,'2021-12-14',2,12,4);
+INSERT INTO `orders` VALUES (11,'2021-12-14',15,12,3),(12,'2021-12-14',15,13,3),(13,'2021-12-14',5,12,12),(14,'2021-12-14',5,6,3),(15,'2021-12-14',2,12,4),(16,'2021-12-16',2,13,17),(17,'2021-12-16',1,13,16),(18,'2021-12-17',1,13,4),(19,'2021-12-17',1,15,17),(20,'2021-12-17',3,15,3);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -74,4 +74,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-14 14:48:26
+-- Dump completed on 2021-12-17  9:18:09

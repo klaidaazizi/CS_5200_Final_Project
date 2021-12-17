@@ -33,13 +33,10 @@ const orderAdderForm = () => {
                         <li className="list-group-item"
                             key={product.id}>
                             <button onClick={() => addOrder(product.id, id, quantity.quantity)}>
-                                {product.name},
-                                {product.category},
-                                {product.price},
-                                {product.inventory},
-                                {product.weight},
-                                {product.ageGroup},
-                                {product.discount}
+                                {"Product Name: " + product.name}
+                                {" | Category: " + product.category}
+                                {" | Price: $" + product.price}
+                                {" | Inventory: " + product.inventory}
                             </button>
                             <br/>
                         </li>)
