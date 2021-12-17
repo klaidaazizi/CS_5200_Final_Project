@@ -14,9 +14,9 @@ const ProductList = () => {
     return(
         <div>
             <h2>Product List</h2>
-            <button className="btn btn-primary" onClick={() => history.push("/products/new")}>
-                Add Product
-            </button>
+            {/*<button className="btn btn-primary" onClick={() => history.push("/products/new")}>*/}
+            {/*    Add Product*/}
+            {/*</button>*/}
             <br/>
             <ul className="list-group">
                 {
