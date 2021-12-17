@@ -8,8 +8,16 @@ export const findProductById = (id) =>
     fetch(`${PRODUCTS_URL}/${id}`)
         .then(response => response.json())
 
-export const findProductsBySellerId = (id) =>
+export const findProductsBySeller = (id) =>
     fetch(`${PRODUCTS_URL}/sellerId/${id}`)
+        .then(response => response.json())
+
+export const findProductByOrderId = (id) =>
+    fetch(`${PRODUCTS_URL}/orderId/${id}`)
+        .then(response => response.json())
+
+export const findProductByDiscountId = (id) =>
+    fetch(`${PRODUCTS_URL}/discountId/${id}`)
         .then(response => response.json())
 
 export const deleteProduct = (id) =>
@@ -17,8 +25,8 @@ export const deleteProduct = (id) =>
         method: "DELETE"
     })
 
-export const createProduct = (product) =>
-    fetch(PRODUCTS_URL, {
+export const createProduct = (product, id) =>
+    fetch(`${PRODUCTS_URL}/${id}`, {
         method: 'POST',
         body: JSON.stringify(product),
         headers: {'content-type': 'application/json'}
@@ -39,5 +47,7 @@ export default {
     deleteProduct,
     createProduct,
     updateProduct,
-    findProductsBySellerId
+    findProductsBySeller,
+    findProductByOrderId,
+    findProductByDiscountId
 }

@@ -1,10 +1,9 @@
 package com.example.springtemplate.daos;
 
-import com.example.springtemplate.models.Customer;
 import com.example.springtemplate.models.Product;
 import com.example.springtemplate.models.Seller;
 import com.example.springtemplate.models.User;
-import com.example.springtemplate.repositories.ProductRepository;
+import com.example.springtemplate.repositories.ProductRestRepository;
 import com.example.springtemplate.repositories.SellerRestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +16,7 @@ public class SellerRestOrmDao {
     @Autowired
     SellerRestRepository sellerRepository;
     @Autowired
-    ProductRepository productRepository;
+    ProductRestRepository productRestRepository;
 
     @GetMapping("/api/sellers")
     public List<Seller> findAllSellers(){
@@ -67,17 +66,17 @@ public class SellerRestOrmDao {
             @PathVariable("productId") Integer productId,
             @PathVariable("sellerId")Integer sellerId) {
         Seller seller = sellerRepository.findSellerById(sellerId);
-        Product product = productRepository.findProductById(productId);
+        Product product = productRestRepository.findProductById(productId);
         seller.getProducts().add(product);
         product.setSeller(seller);
-        productRepository.save(product);
+        productRestRepository.save(product);
         return seller;
     }
 
     @GetMapping("/api/sellers/productId/{id}")
     public Seller findSellerByProductId(
             @PathVariable("id") Integer id){
-        Integer sellerId = productRepository.findProductById(id).getSeller().getId();
+        Integer sellerId = productRestRepository.findProductById(id).getSeller().getId();
         return sellerRepository.findSellerById(sellerId);
     }
 

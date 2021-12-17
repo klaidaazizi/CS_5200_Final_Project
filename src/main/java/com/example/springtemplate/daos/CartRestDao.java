@@ -43,11 +43,7 @@ public class CartRestDao {
 
     @PostMapping("/api/carts")
     public Cart createCart(@RequestBody Cart cart) {
-        Cart newCart = new Cart();
-        newCart.setPayment(cart.getPayment());
-        newCart.setOrders(cart.getOrders());
-        newCart.setPayment(cart.getPayment());
-        return cartRepository.save(newCart);
+        return cartRepository.save(cart);
     }
 
     @PostMapping("/api/carts/{id}")
@@ -69,7 +65,7 @@ public class CartRestDao {
         cart.setCreatedDate(cartUpdates.getCreatedDate());
         cart.setOrders(cartUpdates.getOrders());
         cart.setPayment(cartUpdates.getPayment());
-        cart.setCustomer(cartUpdates.getCustomer());
+        cart.setName(cartUpdates.getName());
         return cartRepository.save(cart);
     }
 

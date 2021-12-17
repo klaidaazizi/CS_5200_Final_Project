@@ -23,19 +23,19 @@ const CartListByCustomer = () => {
                     carts.map(cart =>
                         <li className="list-group-item"
                             key={cart.id}>
-                            <Link to={`/carts/${cart.id}`}>
-                                {cart.createdDate},
-                                {cart.payment}
-                            </Link>
-                            <br/>
-                            <Link to={`/customers/${cart.customer.id}`}>
-                                Link to Customer
-                            </Link>
+                                {"Cart Name: " + cart.name}
+                                {" | Date Created: " + cart.createdDate}
+                                {" | Payment Type: " + cart.payment + ' '}
+                                <Link to={`/carts/${cart.id}`}><button type="button" className="btn btn-outline-info">Edit</button>
+                                </Link>
+                                <Link to={`/customers/${cart.customer.id}`}>
+                                    <button type="button" className="btn btn-outline-success">Go to Customer</button>
+                                </Link>
                         </li>)
                 }
             </ul>
             <Link to={`/`}>
-                HOME
+                <button type="button" className="btn btn-outline-danger">HOME</button>
             </Link>
         </div>
     )

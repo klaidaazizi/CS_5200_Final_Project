@@ -7,14 +7,14 @@ import java.util.List;
 
 @Entity
 @Table(name = "products")
-
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="product_id")
     private Integer id;
     private String name;
-    private String category;
+    @Enumerated(EnumType.STRING)
+    private Category category;
     private Float price;
     private Integer inventory;
     private Float weight;
@@ -23,17 +23,17 @@ public class Product {
 
     @OneToMany(mappedBy = "product")
     @JsonIgnore
-    private List<Order> orders = new ArrayList<>();
+    public List<Order> orders;
 
     @ManyToOne
-    @JoinColumn(name="seller_id")
-    private Seller seller;
+    @JoinColumn
+    public Seller seller;
 
-    @OneToOne
-    @JoinColumn(name="discount_id")
-    private Discount discount;
+    @OneToOne(mappedBy = "product")
+    @JsonIgnore
+    public Discount discount;
 
-    public Product(String name, String category, Float price, Integer inventory, Float weight,
+    public Product(String name, Category category, Float price, Integer inventory, Float weight,
                    Integer ageGroup, List<Order> orders, Seller seller, Discount discount) {
 
         this.name = name;
@@ -65,11 +65,11 @@ public class Product {
         this.name = name;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 

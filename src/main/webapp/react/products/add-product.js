@@ -2,41 +2,18 @@ import productService from "./product-service"
 const {useState, useEffect} = React;
 const {Link, useParams, useHistory} = window.ReactRouterDOM;
 
-const ProductFormEditor = () => {
+const AddProduct = () => {
     const {id} = useParams()
     const [product, setProduct] = useState({})
-    useEffect(() => {
-        if(id !== "new") {
-            findProductById(id)
-        }
-    }, []);
-    const createProduct = (product) =>
-        productService.createProduct(product)
-            .then(() => history.back())
-    const findProductById = (id) =>
-        productService.findProductById(id)
-            .then(product => setProduct(product))
-    const deleteProduct = (id) =>
-        productService.deleteProduct(id)
-            .then(() => history.back())
-    const updateProduct = (id, newProduct) =>
-        productService.updateProduct(id, newProduct)
+    const createProduct = (product, id) =>
+        productService.createProduct(product, id)
             .then(() => history.back())
     return (
         <div>
-            <h2>Product Editor</h2>
-            <Link to={`/`}>
-                <button type="button" className="btn btn-outline-danger">HOME</button>
-            </Link>
-            <br/>
-            <Link to={`/ordersByProduct/${product.id}`}>
-                Link to Orders by product
-            </Link>
-            <br/>
-            <br/>
+            <h2>Product Creator</h2>
             <label>ID</label>
             <input value={product.id}/><br/>
-            <label>Name </label>
+            <label>Name</label>
             <input onChange={(e) =>
                 setProduct(product =>
                     ({...product, name: e.target.value}))}
@@ -49,28 +26,28 @@ const ProductFormEditor = () => {
                         ({...product, category: e.target.value}))}
                 value={product.category}/>
             <br/>
-            <label>Price </label>
+            <label>Price</label>
             <input
                 onChange={(e) =>
                     setProduct(product =>
                         ({...product, price: e.target.value}))}
                 value={product.price}/>
             <br/>
-            <label>Inventory </label>
+            <label>Inventory</label>
             <input
                 onChange={(e) =>
                     setProduct(product =>
                         ({...product, inventory: e.target.value}))}
                 value={product.inventory}/>
             <br/>
-            <label>Weight </label>
+            <label>Weight</label>
             <input
                 onChange={(e) =>
                 setProduct(product =>
                 ({...product, weight: e.target.value}))}
                 value={product.weight}/>
             <br/>
-            <label>Age Group </label>
+            <label>Age Group</label>
                 <input
                   onChange={(e) =>
                     setProduct(product =>
@@ -78,32 +55,26 @@ const ProductFormEditor = () => {
                        value={product.ageGroup}/>
                         <br/>
             <br/>
-            <Link to={`/discountByProduct/${product.id}`}>
-                Link to Product Discount
-            </Link>
-               <br/>
+            <label>Discount</label>
+            <input
+                onChange={(e) =>
+                    setProduct(product =>
+                        ({...product, discount: e.target.value}))}
+                value={product.discount}/>
             <br/>
+            <br/>
+               <br/>
             <button className="btn btn-warning"
                 onClick={() => {
                     history.back()}}>
                 Cancel
             </button>
-            <button className="btn btn-danger"
-                    onClick={() => deleteProduct(product.id)}>
-                Delete
-            </button>
-            <button className="btn btn-success"
-                onClick={() => updateProduct(product.id, product)}>
-                Save
-            </button>
-
-            <button className="btn btn-primary" onClick={() => createProduct(product)}>
+            <button className="btn btn-success" onClick={() => createProduct(product, id)}>
                 Create
             </button>
-
 
         </div>
     )
 }
 
-export default ProductFormEditor
+export default AddProduct

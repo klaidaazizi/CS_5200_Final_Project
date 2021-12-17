@@ -11,19 +11,21 @@ public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="cart_id")
-    private Integer id;
+    public Integer id;
     @Column(name="created_date")
-    private String createdDate;
+    public String createdDate;
     @Column(name = "payment_type")
     @Enumerated(EnumType.STRING)
-    private Payment payment;
+    public Payment payment;
+    @Column(name = "name")
+    public String name;
 
     @OneToMany(mappedBy = "cart")
     @JsonIgnore
-    private List<Order> orders;
+    public List<Order> orders;
 
     @ManyToOne
-    private Customer customer;
+    public Customer customer;
 
     public Cart(String createdDate, Payment payment, List<Order> orders, Customer customer) {
         this.createdDate = createdDate;
@@ -73,4 +75,8 @@ public class Cart {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+
+    public String getName() { return this.name; }
+
+    public void setName(String name) { this.name = name; }
 }

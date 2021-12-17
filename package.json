@@ -1,0 +1,7 @@
+{
+  "name": "CS_5200_Final_Project",
+  "version": "1.0.0",
+  "dependencies": {
+    "react-router-dom": "^6.1.1"
+  }
+}

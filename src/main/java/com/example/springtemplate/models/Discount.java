@@ -1,5 +1,7 @@
 package com.example.springtemplate.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -8,8 +10,8 @@ import java.util.List;
 public class Discount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
-    private Integer discountId;
+    @Column(name = "discount_id")
+    private Integer id;
     private String title;
     private String description;
     @Column(name="start_date")
@@ -18,11 +20,11 @@ public class Discount {
     private String endDate;
     private Integer percent;
 
-    @OneToOne(mappedBy = "discount")
-    private Product product;
+    @OneToOne
+    @JoinColumn(name = "product_id")
+    public Product product;
 
-    public Discount(Integer discountId, String title, String description, String startDate, String endDate, Integer percent, Product product) {
-        this.discountId = discountId;
+    public Discount(String title, String description, String startDate, String endDate, Integer percent, Product product) {
         this.title = title;
         this.description = description;
         this.startDate = startDate;
@@ -34,12 +36,12 @@ public class Discount {
     public Discount() {
     }
 
-    public Integer getDiscountId() {
-        return discountId;
+    public Integer getId() {
+        return id;
     }
 
-    public void setDiscountId(Integer discountId) {
-        this.discountId = discountId;
+    public void setId(Integer discountId) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -73,7 +75,6 @@ public class Discount {
     public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
-
 
     public void setPercent(Integer percent) {
         this.percent = percent;

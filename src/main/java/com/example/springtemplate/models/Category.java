@@ -6,5 +6,6 @@ enum Category{
     Fashion,
     Electronics,
     Home,
-    Office
+    Office,
+    Pet
 }

@@ -26,7 +26,7 @@ const CustomerFormEditor = () => {
         <div>
             <h2>Customer Editor</h2>
             <Link to={`/`}>
-                HOME
+                <button type="button" className="btn btn-outline-danger">HOME</button>
             </Link>
             <br/>
             <Link to={`/cartsByCustomer/${customer.id}`}>
@@ -36,6 +36,7 @@ const CustomerFormEditor = () => {
             <Link to={`/follows/byCustomer/${customer.id}`}>
                 Link to Followed Sellers
             </Link>
+            <br/>
             <br/>
             <label>ID</label>
             <input value={customer.id}/><br/>
@@ -144,7 +145,7 @@ const CustomerFormEditor = () => {
                 Save
             </button>
 
-            <button className="btn btn-success" onClick={() => createCustomer(customer)}>
+            <button className="btn btn-primary" onClick={() => createCustomer(customer)}>
                 Create
             </button>
 
@@ -152,4 +153,4 @@ const CustomerFormEditor = () => {
     )
 }
 
-export default CustomerFormEditor
+export default CustomerFormEditor;

@@ -24,17 +24,16 @@ DROP TABLE IF EXISTS `orders`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `orders` (
   `order_id` int NOT NULL AUTO_INCREMENT,
-  `date_created` datetime NOT NULL,
-  `date_shipped` datetime NOT NULL,
-  `quantity` int NOT NULL,
+  `date_created` date NOT NULL,
+  `quantity` int DEFAULT '1',
   `cart_id` int NOT NULL,
   `product_id` int NOT NULL,
   PRIMARY KEY (`order_id`),
   KEY `order_to_cart_idx` (`cart_id`),
   KEY `order_to_products_idx` (`product_id`),
-  CONSTRAINT `order_to_cart` FOREIGN KEY (`cart_id`) REFERENCES `carts` (`cart_id`),
-  CONSTRAINT `order_to_products` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `order_to_cart` FOREIGN KEY (`cart_id`) REFERENCES `carts` (`cart_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `order_to_products` FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,9 +42,28 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (3,'2020-01-01 00:00:00','2020-01-20 00:00:00',10,1,3);
+INSERT INTO `orders` VALUES (11,'2021-12-14',15,12,3),(12,'2021-12-14',15,13,3),(13,'2021-12-14',5,12,12),(14,'2021-12-14',5,6,3),(15,'2021-12-14',2,12,4),(16,'2021-12-16',2,13,17),(17,'2021-12-16',1,13,16),(18,'2021-12-17',1,13,4),(19,'2021-12-17',1,15,17),(20,'2021-12-17',3,15,3);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `orders_BEFORE_INSERT` BEFORE INSERT ON `orders` FOR EACH ROW BEGIN
+	UPDATE products
+    SET products.inventory = (products.inventory - NEW.quantity)
+    WHERE products.product_id = NEW.product_id
+;END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -56,4 +74,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-06 17:45:00
+-- Dump completed on 2021-12-17  9:18:09

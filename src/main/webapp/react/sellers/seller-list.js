@@ -22,18 +22,19 @@ const SellerList = () => {
                     sellers.map(seller =>
                         <li className="list-group-item"
                             key={seller.id}>
+                                {"Company Name: " + seller.companyName}
+                                {" | Owner: " + seller.firstName}
+                                {" " + seller.lastName}
+                                {" | Year Founded: " + seller.yearFounded + "  "}
                             <Link to={`/sellers/${seller.id}`}>
-                                {seller.companyName},
-                                {seller.yearFounded},
-                                {seller.firstName},
-                                {seller.lastName},
+                                <button type="button" className="btn btn-outline-info">Edit</button>
                             </Link>
                         </li>)
                 }
             </ul>
-
+<br/>
             <Link to={`/`}>
-                HOME
+                <button type="button" className="btn btn-outline-danger">HOME</button>
             </Link>
         </div>
     )

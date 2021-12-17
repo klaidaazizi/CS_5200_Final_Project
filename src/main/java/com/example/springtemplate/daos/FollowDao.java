@@ -41,6 +41,12 @@ public class FollowDao {
         return seller.getFollows();
     }
 
+    @DeleteMapping("/api/follows/{id}")
+    public void deleteProduct(
+            @PathVariable("id") Integer id) {
+        followRepository.deleteById(id);
+    }
+
     @PostMapping("/api/follows/newFollow/{sellerId}/{customerId}")
     public Follow createFollow(@PathVariable("sellerId") Integer sellerId,
                              @PathVariable("customerId") Integer customerId){

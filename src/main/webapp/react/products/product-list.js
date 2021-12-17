@@ -14,31 +14,31 @@ const ProductList = () => {
     return(
         <div>
             <h2>Product List</h2>
-            <button className="btn btn-primary" onClick={() => history.push("/products/new")}>
-                Add Product
-            </button>
+            {/*<button className="btn btn-primary" onClick={() => history.push("/products/new")}>*/}
+            {/*    Add Product*/}
+            {/*</button>*/}
+            <br/>
             <ul className="list-group">
                 {
                     products.map(product =>
                         <li className="list-group-item"
                             key={product.id}>
+                            {"Product Name: " + product.name}
+                            {" | Category: " + product.category}
+                            {" | Price: $" + product.price}
+                            {" | Inventory: " + product.inventory + ' '}
                             <Link to={`/products/${product.id}`}>
-                                {product.name},
-                                {product.category},
-                                {product.price},
-                                {product.inventory},
-                                {product.weight},
-                                {product.ageGroup},
-                                {product.discount}
-                            </Link>
-                             <br/>
-                             <Link to={`/productForSeller/${product.id}`}>
-                                Link to Seller
+                                <button type="button" className="btn btn-outline-info">Edit</button>
                             </Link>
 
+                            <Link to={`/sellers/${product.seller.id}`}><button type="button" className="btn btn-outline-success">Go to Seller</button>
+                            </Link>
                         </li>)
                 }
             </ul>
+            <Link to={`/`}>
+                <button type="button" className="btn btn-outline-danger">HOME</button>
+            </Link>
         </div>
     )
 }

@@ -25,12 +25,24 @@ const cartFormEditor = () => {
     return (
         <div>
             <Link to={`/`}>
-                HOME
+                <button type="button" className="btn btn-outline-danger">HOME</button>
             </Link>
+            <br/>
+            <Link to={`/ordersByCart/${id}`}>
+                Link to Orders
+            </Link>
+            <br/>
             <br/>
             <h2>Cart Editor</h2>
             <label>ID</label>
             <input value={cart.id}/><br/>
+            <label>Cart Name</label>
+            <input
+                onChange={(e) =>
+                    setCart(cart =>
+                        ({...cart, name: e.target.value}))}
+                value={cart.name}/>
+            <br/>
             <label>Payment Type</label>
             <input
                 onChange={(e) =>
@@ -53,7 +65,7 @@ const cartFormEditor = () => {
                 Save
             </button>
 
-            <button className="btn btn-success" onClick={() => createCart(cart)}>
+            <button className="btn btn-primary" onClick={() => createCart(cart)}>
                 Create
             </button>
 

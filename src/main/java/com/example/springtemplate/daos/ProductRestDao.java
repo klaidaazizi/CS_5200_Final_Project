@@ -1,8 +1,10 @@
 package com.example.springtemplate.daos;
 
-import com.example.springtemplate.models.Cart;
 import com.example.springtemplate.models.Product;
-import com.example.springtemplate.repositories.ProductRepository;
+import com.example.springtemplate.models.Seller;
+import com.example.springtemplate.repositories.DiscountRestRepository;
+import com.example.springtemplate.repositories.OrderRestRepository;
+import com.example.springtemplate.repositories.ProductRestRepository;
 import com.example.springtemplate.repositories.SellerRestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,56 +15,77 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class ProductRestDao {
     @Autowired
-    ProductRepository productRepository;
+    ProductRestRepository productRestRepository;
     @Autowired
     SellerRestRepository sellerRepository;
+    @Autowired
+    OrderRestRepository orderRepository;
+    @Autowired
+    DiscountRestRepository discountRepository;
 
-    @PostMapping("/api/products")
-    public Product createProduct(@RequestBody Product product) {
+    @PostMapping("/api/products/{id}")
+    public Product createProduct(@RequestBody Product product,
+                                 @PathVariable("id") Integer sellerId) {
         Product newProduct = new Product();
+        Seller seller = sellerRepository.findSellerById(sellerId);
         newProduct.setName(product.getName());
         newProduct.setAgeGroup(product.getAgeGroup());
         newProduct.setCategory(product.getCategory());
         newProduct.setPrice(product.getPrice());
         newProduct.setInventory(product.getInventory());
-        return productRepository.save(newProduct);
+        newProduct.setSeller(seller);
+        return productRestRepository.save(newProduct);
     }
 
     @GetMapping("/api/products")
     public List<Product> findAllProducts() {
-        return productRepository.findAllProducts();
+        return productRestRepository.findAllProducts();
     }
 
     @GetMapping("/api/products/{id}")
     public Product findProductById(
             @PathVariable("id") Integer id) {
-        return productRepository.findProductById(id);
+        return productRestRepository.findProductById(id);
     }
 
     @GetMapping("/api/products/sellerId/{id}")
     public List<Product> findProductsBySeller(
             @PathVariable("id") Integer id){
-        return productRepository.findProductsBySeller(id);
+        return productRestRepository.findProductsBySeller(id);
     }
 
     @PutMapping("/api/products/{id}")
     public Product updateProduct(
             @PathVariable("id") Integer id,
             @RequestBody Product productUpdates) {
-        Product product = productRepository.findProductById(id);
+        Product product = productRestRepository.findProductById(id);
         product.setName(productUpdates.getName());
         product.setCategory(productUpdates.getCategory());
         product.setPrice(productUpdates.getPrice());
         product.setInventory(productUpdates.getInventory());
         product.setWeight(productUpdates.getWeight());
         product.setAgeGroup(productUpdates.getAgeGroup());
-        return productRepository.save(product);
+        return productRestRepository.save(product);
     }
 
     @DeleteMapping("/api/products/{id}")
     public void deleteProduct(
             @PathVariable("id") Integer id) {
-        productRepository.deleteById(id);
+        productRestRepository.deleteById(id);
+    }
+
+    @GetMapping("/api/products/orderId/{id}")
+    public Product findProductByOrderId(
+            @PathVariable("id") Integer id){
+        Integer productId = orderRepository.findOrderById(id).getProduct().getId();
+        return productRestRepository.findProductById(productId);
+    }
+
+    @GetMapping("/api/products/discountId/{id}")
+    public Product findProductByDiscountId(
+            @PathVariable("id") Integer id){
+        Integer productId = discountRepository.findDiscountById(id).getProduct().getId();
+        return productRestRepository.findProductById(productId);
     }
 
 
